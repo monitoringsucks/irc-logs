@@ -1,0 +1,996 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+	<title>5-26-11.log</title>
+	<meta name="generator" content="irclog2html.py 2.9.2 by Marius Gedminas">
+	<meta name="version" content="2.9.2 - 2011-01-16">
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+<body text="#000000" bgcolor="#ffffff"><tt>
+**** BEGIN LOGGING AT Thu May 26 20:35:57 2011<br>
+<font color="#CC00CC">*Now talking on ##monitoringsucks</font><br>
+<font color="#CC00CC">*threescoops (~baz@hyperbola.interestingangle.com) has joined ##monitoringsucks</font><br>
+<font color="#CC00CC">*vvuksan (~vuksan@c-24-63-41-19.hsd1.ma.comcast.net) has joined ##monitoringsucks</font><br>
+<font color="#CC00CC">*whack (~jls@carrera.databits.net) has joined ##monitoringsucks</font><br>
+<font color="#CC00CC">*ickymettle (~quassel@ec2-50-17-228-81.compute-1.amazonaws.com) has joined ##monitoringsucks</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">sweet. real people</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">I was just going to talk to myself</font><br>
+<font color="#42427e">&lt;ickymettle&gt;</font> <font color="#000000">!bots</font><br>
+<font color="#818144">&lt;vvuksan&gt;</font> <font color="#000000">woohoo</font><br>
+<font color="#42427e">&lt;ickymettle&gt;</font> <font color="#000000">this is a great idea</font><br>
+<font color="#818144">&lt;vvuksan&gt;</font> <font color="#000000">ickymettle: your eyes feel better?</font><br>
+<font color="#42427e">&lt;ickymettle&gt;</font> <font color="#000000">me == firsttime caller long time lurker</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">ickymettle, how're you feeling?</font><br>
+<font color="#42427e">&lt;ickymettle&gt;</font> <font color="#000000">vvuksan: still very scratchy but yeah on the mend ... basically they chopped the muscles off the sides and reattached them further back, crazy stuff -- long time strabismus issues since birth</font><br>
+<font color="#818144">&lt;vvuksan&gt;</font> <font color="#000000">:-(</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">ouchie</font><br>
+<font color="#42427e">&lt;ickymettle&gt;</font> <font color="#000000">am in the process of relocating from Australia to New York so wanted to get the surgery done here before we leave</font><br>
+<font color="#42427e">&lt;ickymettle&gt;</font> <font color="#000000">good outcome though which is awesome ... but yeah best description of post op was throw sand in your eyes and spin around til dizzy .. that's how I felt for the past week :)</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">holy shit</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">that's wild</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">glad everything appears to be going okay </font><br>
+<font color="#42427e">&lt;ickymettle&gt;</font> <font color="#000000">gets even better .... on one eye they used adjustable sutures so post op in recovery when I came around they literally ran a bunch of tests then adjusted the muscle position WHILE I WAS AWAKE! </font><br>
+<font color="#818144">&lt;vvuksan&gt;</font> <font color="#000000">gee</font><br>
+<font color="#42427e">&lt;ickymettle&gt;</font> <font color="#000000">didn't feel any pain but it's a very surreal feeling having the specialist with tweezers puppeting the eye into palce</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">should have used chef instead</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">.....</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">I kid</font><br>
+<font color="#42427e">&lt;ickymettle&gt;</font> <font color="#000000">;)</font><br>
+<font color="#42427e">&lt;ickymettle&gt;</font> <font color="#000000">yeah I was long time puppet user in a large infra before coming to etsy and migrating my brain to chef</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">heh</font><br>
+<font color="#CC00CC">*jdixon (~jdixon@c-68-55-0-29.hsd1.md.comcast.net) has joined ##monitoringsucks</font><br>
+<font color="#818144">&lt;vvuksan&gt;</font> <font color="#000000">speaking of kids my son has exotropia which is a form of strabismus. He actually saw an opthomologist just today :-/</font><br>
+<font color="#42427e">&lt;ickymettle&gt;</font> <font color="#000000">but that's another ##systemautomationsucks discussion for another day :)</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">but let's bitch about nagios for a while ;)</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">lol, the usual suspects</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">and zenoss</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">and opennms, zabbix</font><br>
+<font color="#42427e">&lt;ickymettle&gt;</font> <font color="#000000">shame lozzd isn't awake he'd be all over this</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">I think he was the inspiration</font><br>
+<font color="#42427e">&lt;ickymettle&gt;</font> <font color="#000000">EMC smarts *ducks*</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">reconnoiter doesn't do fault detection/notification</font><br>
+<font color="#CC00CC">*geekle_ (~quassel@202.146.7.239) has joined ##monitoringsucks</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">woohoo</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">circonus is a pain to deploy</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">a geekle_ </font><br>
+<font color="#488888">&lt;geekle_&gt;</font> <font color="#000000">:)</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">mon is useless</font><br>
+<font color="#CC00CC">*joemiller (ixjxkcw3lx@24.255.14.172) has joined ##monitoringsucks</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">collectd's configuration blows</font><br>
+<font color="#488888">&lt;geekle_&gt;</font> <font color="#000000">I'm still signed into my Quassel at home :/</font><br>
+<font color="#42427e">&lt;ickymettle&gt;</font> <font color="#000000">geekle: inherited my old infrastructure *sorry man*</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">okay so let's do this. Out of the existing things out there</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">forget what sucks, everything sucks</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">is there anything you guys actually LIKE about them?</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">what features do you like?</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">+1</font><br>
+<font color="#4b904b">&lt;joemiller&gt;</font> <font color="#000000">graphing</font><br>
+<font color="#4b904b">&lt;joemiller&gt;</font> <font color="#000000">hrm</font><br>
+<font color="#818144">&lt;vvuksan&gt;</font> <font color="#000000">like about specific packages or ?</font><br>
+<font color="#818144">&lt;vvuksan&gt;</font> <font color="#000000">be more specific</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">vvuksan, good point</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">so </font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">there's two things really</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">monitoring/alerting</font><br>
+<font color="#4b904b">&lt;joemiller&gt;</font> <font color="#000000">i like deep-linking. and powerful linking, like with graphite.&nbsp;&nbsp;makes dashboards easy to build</font><br>
+<font color="#488888">&lt;geekle_&gt;</font> <font color="#000000">I like the relationship/dependencies for hosts/services on Nargee-arse (Nagios)</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">and trending</font><br>
+<font color="#818144">&lt;vvuksan&gt;</font> <font color="#000000">right</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">I like graphite because it's stupid simple to get a wide variety of data from a variety of agents into it.</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">but it has no useful dashboard.</font><br>
+<font color="#4b904b">&lt;joemiller&gt;</font> <font color="#000000">i like passive checks a lot. i wish more monitoring suites had that.</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">and no fault detection / notifications.</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">jdixon: the new version does, iirc.</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">and you can use rocksteady for fault detection</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">whack: "no useful dashboard"</font><br>
+<font color="#818144">&lt;vvuksan&gt;</font> <font color="#000000">whack: it has a dashboard but yeah</font><br>
+<font color="#818144">&lt;vvuksan&gt;</font> <font color="#000000">not highly useful</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">really though, I think 'good' will require combinging multiple tools</font><br>
+<font color="#42427e">&lt;ickymettle&gt;</font> <font color="#000000">+1 for how ridiculously easy it is to get metrics into graphite</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">vs hoping there's one great tool </font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">like, I did a dashboard from graphite using google pages.</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">copy url, paste image, done.</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">there will be no one great *open source* tool in our lifetime</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">what you WILL see though...</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">right so my perfect tool would take nagios' alerting flexibility and mix it with graphite's arbitrary data</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">is the ability to glue components together using the same data type/source.</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">like we're already seeing</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">because nagios has the whole escalation, path</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">with collectd, ganglia, graphite, etc</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">lusis: I never use nagios's escalation stuff</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">I've always relied on external tools for that</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">whack, interesting. I love it</font><br>
+<font color="#4b904b">&lt;joemiller&gt;</font> <font color="#000000">whack, agree. i think the best tools will realize they are not going to be The One tool, and will make composing them into dashboards and such easier than their less good peers</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">inevitably volcane will finish his framework and you'll be able to plug in components</font><br>
+<font color="#488888">&lt;geekle_&gt;</font> <font color="#000000">nagios escalation++</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">of course I find I'm loving collectd more than munin</font><br>
+<font color="#42427e">&lt;ickymettle&gt;</font> <font color="#000000">for graphite dashboarding we basically have a dashboard class that wraps graph generation up</font><br>
+<font color="#818144">&lt;vvuksan&gt;</font> <font color="#000000">thing to recognize is that it's not even about whether a single tool can satisfy all needs</font><br>
+<font color="#42427e">&lt;ickymettle&gt;</font> <font color="#000000">it's all templated</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">vvuksan, yeah</font><br>
+<font color="#4b904b">&lt;joemiller&gt;</font> <font color="#000000">i like pagerduty, because i can make it call me.&nbsp;&nbsp;don't have to hire or outsource a NOC to call me if i ignore/sleep-thru an SMS</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">lusis: I like munin &gt; collectd, but munin performance blows</font><br>
+<font color="#818144">&lt;vvuksan&gt;</font> <font color="#000000">it's also about how people work</font><br>
+<font color="#42427e">&lt;ickymettle&gt;</font> <font color="#000000">so 10 lines of php we have dashboards of any metrics</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">I hope someone is recording this chat :)</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">I am ;)</font><br>
+<font color="#42427e">&lt;ickymettle&gt;</font> <font color="#000000">I am</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">yay</font><br>
+<font color="#818144">&lt;vvuksan&gt;</font> <font color="#000000">for example one of the reasons I got involved in rewriting the Ganglia UI is that I generally liked it</font><br>
+<font color="#42427e">&lt;ickymettle&gt;</font> <font color="#000000">pagerduty: needs a fkn API *NOW*</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">nod</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">pagerduty has an api</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">ish.l</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">their nagios integegration is pretty meh</font><br>
+<font color="#818144">&lt;vvuksan&gt;</font> <font color="#000000">but implemented tons of things by hand in various jobs</font><br>
+<font color="#4d4d93">&lt;portertech&gt;</font> <font color="#000000">an api to pull out events</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">portertech: +1</font><br>
+<font color="#818144">&lt;vvuksan&gt;</font> <font color="#000000">I figured I'd put in an official feature</font><br>
+<font color="#4d4d93">&lt;portertech&gt;</font> <font color="#000000">hello</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">I asked for that months ago</font><br>
+<font color="#4d4d93">&lt;portertech&gt;</font> <font color="#000000">im in</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">portertech lives!</font><br>
+<font color="#488888">&lt;geekle_&gt;</font> <font color="#000000">My two wishes from a new monitoring suite... 1) API 2) decentralised</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">DevMon is the next frontier</font><br>
+<font color="#42427e">&lt;ickymettle&gt;</font> <font color="#000000">whack: there is an API for config?</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">ickymettle: mmm probably not</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">pluggable components with an API</font><br>
+<font color="#818144">&lt;vvuksan&gt;</font> <font color="#000000">that said the interface makes sense to me but may not make sense to other people</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">I don't really remember, I've dropped those brain cells ;)</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">okay so it looks like we all agree a sane api is key ;)</font><br>
+<font color="#4b904b">&lt;joemiller&gt;</font> <font color="#000000">i like the simpleness of flapjack, but i need a view that i can see red/green.&nbsp;&nbsp;what's still alerting, what's not alerting</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">in whatever components</font><br>
+<font color="#42427e">&lt;ickymettle&gt;</font> <font color="#000000">we need to automate on-call rotation in pagerduty, and also query the current config</font><br>
+<font color="#CC00CC">*kallistec (~kallistec@184-106-81-48.static.cloud-ips.com) has joined ##monitoringsucks</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">kallistec too?</font><br>
+<font color="#42427e">&lt;ickymettle&gt;</font> <font color="#000000">they've been promising API for us since the end of last year</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">damn</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">shit just got real</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">ickymettle: +1</font><br>
+<font color="#97974f">&lt;kallistec&gt;</font> <font color="#000000">lol</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">ickymettle: that's the response I got, too</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">kallistec, everyone is going free form right now</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">because I wanted a way to query active alerts, etc</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">I'm just logging</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">for ideas ;)</font><br>
+<font color="#97974f">&lt;kallistec&gt;</font> <font color="#000000">heh</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">I think we're on the "pagerduty needs this" portion of the program</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">;)</font><br>
+<font color="#4b904b">&lt;joemiller&gt;</font> <font color="#000000">heh</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">okay so here's a question</font><br>
+<font color="#4b904b">&lt;joemiller&gt;</font> <font color="#000000">PD is just escalations. maybe move on to next sub-topic of the monitoring universe</font><br>
+<font color="#818144">&lt;vvuksan&gt;</font> <font color="#000000">lusis: i would suggest you first pick a trending system you like</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">starting at the collection level</font><br>
+<font color="#97974f">&lt;kallistec&gt;</font> <font color="#000000">I dunno, pagerduty seems fine for what it is</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">collection is easy now</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">right</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">collection still sucks</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">so is everyone fairly happy with existing stuff?</font><br>
+<font color="#818144">&lt;vvuksan&gt;</font> <font color="#000000">lusis: then you can write something that interfaces Nagios to it</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">deployment is still meh, but volcane is probably getting closer</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">whack, orly?</font><br>
+<font color="#42427e">&lt;ickymettle&gt;</font> <font color="#000000">collection is still painful</font><br>
+<font color="#4b904b">&lt;joemiller&gt;</font> <font color="#000000">define collection</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">nagios drops most output from checks</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">collectd, munin, snmp</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">boolean "fail, healthy" is nice, but cutting the output sucks ass.</font><br>
+<font color="#42427e">&lt;ickymettle&gt;</font> <font color="#000000">having built a centralised nagios monitoring 3x datacentres it is so horrible</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">metrics gathering</font><br>
+<font color="#488888">&lt;geekle_&gt;</font> <font color="#000000">whack: you can change that.</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">statsd++, logster++</font><br>
+<font color="#97974f">&lt;kallistec&gt;</font> <font color="#000000">munin is too tightly coupled to the output format</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">ickymettle, amen</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">kallistec, yeah</font><br>
+<font color="#818144">&lt;vvuksan&gt;</font> <font color="#000000">whack: but in most cases if you are using a trending system you really don't need to many nagios checks</font><br>
+<font color="#818144">&lt;vvuksan&gt;</font> <font color="#000000">whack: make that native checks</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">kallistec: plus writing plugins for munin is considerably more awkward than for graphitem, collectd, and ganglia</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">one thing I like about collectd is the write plugins</font><br>
+<font color="#818144">&lt;vvuksan&gt;</font> <font color="#000000">whack: you should just query the trending system</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">vvuksan: a what?</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">especially write_http</font><br>
+<font color="#97974f">&lt;kallistec&gt;</font> <font color="#000000">having a centralized polling daemon can't possibly scale</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">vvuksan: in my world there are two kinds of checks - metrics and tests.</font><br>
+<font color="#4d4d93">&lt;portertech&gt;</font> <font color="#000000">I don't care about an admin UI, would like an RESTful API and a simple config file format (perhaps yml or raw json even) that I can happily handle w/ CM, need it to talk nagios (migration simplicity), need to be able to distribute</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">kallistec, I agree I used to think it would</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">tests are just like unit tests done at build-time</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">but as portertech says</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">with CM</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">they have useful output, stack traces, etc</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">it's pointless to need that now</font><br>
+<font color="#42427e">&lt;ickymettle&gt;</font> <font color="#000000">kallistec: we had nagios instances running in each DC but feeding passive check results back to a central aggregator</font><br>
+<font color="#4b904b">&lt;joemiller&gt;</font> <font color="#000000">i think there are a lot of decent tools for metrics, i actually find lacking in the 'tests' category</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">metrics like "How many qps are we doing?" just get numbers.</font><br>
+<font color="#818144">&lt;vvuksan&gt;</font> <font color="#000000">yep</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">like having a complex selenium web test simply output "OK"</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">is not useful.</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">what failed? when? what was the error message?</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">"CRITICAL" is not useful for debugging that.</font><br>
+<font color="#818144">&lt;vvuksan&gt;</font> <font color="#000000">but why would you want Nagios to record it ?</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">I think the problem I have is that all the existing "packages" expect to be the system of record</font><br>
+<font color="#818144">&lt;vvuksan&gt;</font> <font color="#000000">wouldn't you record it elsewhere ?</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">and that doesn't fit my world view</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">vvuksan: because nagios already has that feature and that's the monitoring system I use currently.</font><br>
+<font color="#818144">&lt;vvuksan&gt;</font> <font color="#000000">fair enough</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">y'all ever use hudson/jenkins, and it's unit-test parsing stuff?</font><br>
+<font color="#4b904b">&lt;joemiller&gt;</font> <font color="#000000">would like to be able to get some re-use out of QA tests</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">whack, working on it a bit now</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">have a JUnit test fail, and it shows you where in the suite it failed, the stack trace, and output, etc, all quite nicely</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">joemiller, good point</font><br>
+<font color="#97974f">&lt;kallistec&gt;</font> <font color="#000000">yeah, I dunno how practical that is</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">joemiller, that has the benefit of getting useful monitors in the system up front</font><br>
+<font color="#97974f">&lt;kallistec&gt;</font> <font color="#000000">i.e., our tests expect to be able to nuke the database</font><br>
+<font color="#4b904b">&lt;joemiller&gt;</font> <font color="#000000">heh</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">kallistec, chaos monkey monitoring</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">;)</font><br>
+<font color="#97974f">&lt;kallistec&gt;</font> <font color="#000000">not gonna run it in prod</font><br>
+<font color="#4b904b">&lt;joemiller&gt;</font> <font color="#000000">good point</font><br>
+<font color="#97974f">&lt;kallistec&gt;</font> <font color="#000000">I mean, I'm confident I can restore from backups</font><br>
+<font color="#4b904b">&lt;joemiller&gt;</font> <font color="#000000">but you don't need to restore from backups every 5 minutes? </font><br>
+<font color="#97974f">&lt;kallistec&gt;</font> <font color="#000000">and I'm also confident it would piss ppl off if I did it every day</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">kallistec, don't you have a subset though that are performance related that don't expect to purge?</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">or could easily be adapted with minimal effort?</font><br>
+<font color="#4b904b">&lt;joemiller&gt;</font> <font color="#000000">continuous benchmarking/loadtesting.</font><br>
+<font color="#97974f">&lt;kallistec&gt;</font> <font color="#000000">no, it's built in to the test framework</font><br>
+<font color="#97974f">&lt;kallistec&gt;</font> <font color="#000000">we did adapt some</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">kallistec, ahh okay</font><br>
+<font color="#97974f">&lt;kallistec&gt;</font> <font color="#000000">and it took sooo long that it's really not gonna happen on a regular basis</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">k</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">so it's clear that no single tool fits the bill anymore?</font><br>
+<font color="#97974f">&lt;kallistec&gt;</font> <font color="#000000">there were some talks at railsconf last year about running cukes agains prod</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">just not realistic</font><br>
+<font color="#4b904b">&lt;joemiller&gt;</font> <font color="#000000">i wish a monitoring system would configure itself for me. guess my intent</font><br>
+<font color="#97974f">&lt;kallistec&gt;</font> <font color="#000000">and I was like, "tried it, didn't like it"</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">heh</font><br>
+<font color="#818144">&lt;vvuksan&gt;</font> <font color="#000000">lusis: correct. There is no one tool</font><br>
+<font color="#42427e">&lt;ickymettle&gt;</font> <font color="#000000">one feature i'd love to see is some sort of adaptive thresholding</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">vvuksan, okay cool. Got that out of the way</font><br>
+<font color="#97974f">&lt;kallistec&gt;</font> <font color="#000000">anyway, I've been hacking on and off on some stuff for configuration monitoring</font><br>
+<font color="#4b904b">&lt;joemiller&gt;</font> <font color="#000000">so you got multiple tools, you start to get complexity in configuring them all and keeping them in sync</font><br>
+<font color="#4b904b">&lt;joemiller&gt;</font> <font color="#000000">perhaps noah helps with that</font><br>
+<font color="#97974f">&lt;kallistec&gt;</font> <font color="#000000">er, integration monitoring</font><br>
+<font color="#42427e">&lt;ickymettle&gt;</font> <font color="#000000">some means of kinda having somethign in "listen" mode for a say week</font><br>
+<font color="#97974f">&lt;kallistec&gt;</font> <font color="#000000">only a client tho</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">kallistec, you have a repo public right?</font><br>
+<font color="#42427e">&lt;ickymettle&gt;</font> <font color="#000000">it determines what the metric "normal" looks like</font><br>
+<font color="#97974f">&lt;kallistec&gt;</font> <font color="#000000">yeah</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">I think you linked it?</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">ickymettle, oh I like that</font><br>
+<font color="#42427e">&lt;ickymettle&gt;</font> <font color="#000000">then can alert of anomaly</font><br>
+<font color="#97974f">&lt;kallistec&gt;</font> <font color="#000000"><a href="https://github.com/danielsdeleo/critical">https://github.com/danielsdeleo/critical</a></font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">isn't that the rocksteady approach though?</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">learning system?</font><br>
+<font color="#42427e">&lt;ickymettle&gt;</font> <font color="#000000">I think that was their vibe</font><br>
+<font color="#818144">&lt;vvuksan&gt;</font> <font color="#000000">you could do holt-winters stuff but that's iffy</font><br>
+<font color="#42427e">&lt;ickymettle&gt;</font> <font color="#000000">I know hyperic was touting that as well</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">hyperic</font><br>
+<font color="#97974f">&lt;kallistec&gt;</font> <font color="#000000">I had to "pivot" to making it a metric collector for a bit just to run it in a useful context for a whil</font><br>
+<font color="#818144">&lt;vvuksan&gt;</font> <font color="#000000">you can turn it on in RRDs</font><br>
+<font color="#CC00CC">*lusis throws up a little in his mouth</font><br>
+<font color="#42427e">&lt;ickymettle&gt;</font> <font color="#000000">vvuksan: funny you should mention, we're looking at implementing holt-winters in graphite at the moment</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">kallistec, got it bookmarked now ;)</font><br>
+<font color="#818144">&lt;vvuksan&gt;</font> <font color="#000000">i have an implementation that adds it in Ganglia</font><br>
+<font color="#42427e">&lt;ickymettle&gt;</font> <font color="#000000">oh nice</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">kallistec, I'm going to be doing up some notes</font><br>
+<font color="#4d4d93">&lt;portertech&gt;</font> <font color="#000000">has anyone used flapjack in any sort of env? w/ its current state?</font><br>
+<font color="#818144">&lt;vvuksan&gt;</font> <font color="#000000">but it needs work</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">lindsay said flapjack was kind of stalled right now</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">I think</font><br>
+<font color="#97974f">&lt;kallistec&gt;</font> <font color="#000000">lusis: anyway, the long term plan is to flesh out story monitoring etc</font><br>
+<font color="#4d4d93">&lt;portertech&gt;</font> <font color="#000000">lusis: I'd like to pick it up</font><br>
+<font color="#818144">&lt;vvuksan&gt;</font> <font color="#000000">yeah I haven't seen any activity on flapjack for quite a while</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">ickymettle: scoutapp does some sort of that</font><br>
+<font color="#4d4d93">&lt;portertech&gt;</font> <font color="#000000">I did the arch</font><br>
+<font color="#97974f">&lt;kallistec&gt;</font> <font color="#000000">maybe make a passive check bridge to nagios</font><br>
+<font color="#4d4d93">&lt;portertech&gt;</font> <font color="#000000">I hate NSCA</font><br>
+<font color="#42427e">&lt;ickymettle&gt;</font> <font color="#000000">basically when we put historical averages into graphite that showed us the value of looking at current vs historical in trending data</font><br>
+<font color="#97974f">&lt;kallistec&gt;</font> <font color="#000000">so I can iterate on something</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">portertech, +1000 on ncsa</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">I like check_mk in Nagios land</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">but it's not CM-configurable friendly</font><br>
+<font color="#818144">&lt;vvuksan&gt;</font> <font color="#000000">am I the only one that doesn't use NCSA :-)</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">portertech, oh wait</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">I was thinking nrpe ;)</font><br>
+<font color="#818144">&lt;vvuksan&gt;</font> <font color="#000000">or nrpe whatever</font><br>
+<font color="#818144">&lt;vvuksan&gt;</font> <font color="#000000">:-)</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">but check_mk doesn't use ncsa either</font><br>
+<font color="#4d4d93">&lt;portertech&gt;</font> <font color="#000000">We've several stacks, each w/ their own headless nagios, having to batch nsca to central</font><br>
+<font color="#4b904b">&lt;joemiller&gt;</font> <font color="#000000">any thoughts on the saas/hosted monitoring options?&nbsp;&nbsp;new relic, cloudkick, etc</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">kallistec, why nagios? Just because it's the gorilla in the room?</font><br>
+<font color="#42427e">&lt;ickymettle&gt;</font> <font color="#000000">I just had flashbacks to NSCA telnet over serial </font><br>
+<font color="#4d4d93">&lt;portertech&gt;</font> <font color="#000000">the result is unpleasant</font><br>
+<font color="#97974f">&lt;kallistec&gt;</font> <font color="#000000">lusis: just cuz we use it right now</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">kallistec, ahh okay</font><br>
+<font color="#42427e">&lt;ickymettle&gt;</font> <font color="#000000">new relic is frighteningly good</font><br>
+<font color="#42427e">&lt;ickymettle&gt;</font> <font color="#000000">however</font><br>
+<font color="#4b904b">&lt;joemiller&gt;</font> <font color="#000000">pricey</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">yep</font><br>
+<font color="#97974f">&lt;kallistec&gt;</font> <font color="#000000">so I can run it in preprod at least</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">$$$$$</font><br>
+<font color="#42427e">&lt;ickymettle&gt;</font> <font color="#000000">1) expensve</font><br>
+<font color="#CC00CC">*mconigliaro (~anonymous@206.205.72.162) has joined ##monitoringsucks</font><br>
+<font color="#4d4d93">&lt;portertech&gt;</font> <font color="#000000">joemiller: saas/hosted works for me when the env is small, but they aren't as flexible or extensible as i'd like</font><br>
+<font color="#42427e">&lt;ickymettle&gt;</font> <font color="#000000">2) not very extensible (you can but it's not pretty)</font><br>
+<font color="#42427e">&lt;ickymettle&gt;</font> <font color="#000000">the reporting is awesome</font><br>
+<font color="#42427e">&lt;ickymettle&gt;</font> <font color="#000000">it's hopeless for alerting</font><br>
+<font color="#4d4d93">&lt;portertech&gt;</font> <font color="#000000">ickymettle: agreed, its gets damn expensive </font><br>
+&gt;mconigliaro&lt;just jump right in. People are brainstorming random shit. I'm just logging and taking notes<br>
+<font color="#42427e">&lt;ickymettle&gt;</font> <font color="#000000">they've thankfully done a lot of work on their backend collectors so it's more stable now</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">does anyone find nagios' flapping useful?</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">I happen to like it</font><br>
+<font color="#97974f">&lt;kallistec&gt;</font> <font color="#000000">half the time it fucks us</font><br>
+<font color="#42427e">&lt;ickymettle&gt;</font> <font color="#000000">but could regurlarly bring out collectors down</font><br>
+<font color="#42427e">&lt;ickymettle&gt;</font> <font color="#000000">at that point you're blind</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">lusis: flapping is terrible</font><br>
+<font color="#42427e">&lt;ickymettle&gt;</font> <font color="#000000">also very hard ot pull the data out for other purposes</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">really?</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">hrmm</font><br>
+<font color="#97974f">&lt;kallistec&gt;</font> <font color="#000000">the flap detection will kick in, the service will recover, but it won't cancel the alarm in pgrduty</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">lusis: flapping detection should alert, not silence</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">oh let's see "my service is in a crappy state, please don't tell me about it"</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">that makes no fucking sense</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">at google any "flapping" services triggered alerts</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">+1</font><br>
+<font color="#4d4d93">&lt;portertech&gt;</font> <font color="#000000">+1</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">heh</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">flapping is megabad</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">it enables laziness</font><br>
+<font color="#42427e">&lt;ickymettle&gt;</font> <font color="#000000">I can totally see the value in flap detection but it needs to be easier to configure</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">ickymettle, whew</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">thought I was alone</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">the "value" in flapping is in being empowered to ignore alerts</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">I totally get what everyone is saying</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">yeah</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">but </font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">if you see that as value I don't want you watching my stuff ;)</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">flapping should trigger "this is flapping" alerts</font><br>
+<font color="#4b904b">&lt;joemiller&gt;</font> <font color="#000000">haha</font><br>
+<font color="#42427e">&lt;ickymettle&gt;</font> <font color="#000000">in most instances I just disable it because badly configured flap detection is way worse than no flap detection</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">if you want to silence it, there should be a "I know this is flapping, hush for a while" action</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">whack, gotcha</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">if the flapping is caused by latency issues, use decentralized nagios checks</font><br>
+<font color="#97974f">&lt;kallistec&gt;</font> <font color="#000000">yeah, the value is in stfu-ing so you don't get a barrage</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">er, distributed</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">which you can do in nagios (schedule downtime, or whatnot)</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">whack, via command file =/</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">kallistec: nod, and STFU should be a human action</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">lusis: so? :(</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">heh</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">I do it via the web interface</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">I mean, it sucks, granted</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">I think I'd be happier with Nagios if it had a real api</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">"silence this for 2 hours" should be a simple action</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">whack, agreed</font><br>
+<font color="#4d4d93">&lt;portertech&gt;</font> <font color="#000000">talk to nagios from emacs :P</font><br>
+<font color="#818144">&lt;vvuksan&gt;</font> <font color="#000000">i have a script that does that</font><br>
+<font color="#4b904b">&lt;joemiller&gt;</font> <font color="#000000">isn't incinga trying to make a nagios api?</font><br>
+<font color="#4b904b">&lt;joemiller&gt;</font> <font color="#000000">icinga, whatever it is</font><br>
+<font color="#818144">&lt;vvuksan&gt;</font> <font color="#000000">specify a regex and it silences everything in sight</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">joemiller, I point you to history</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">joemiller, groundwork</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">=/</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">joemiller: nod</font><br>
+<font color="#488888">&lt;geekle_&gt;</font> <font color="#000000">All downtiming and undowntiming a group of hosts/services should be easier.</font><br>
+<font color="#488888">&lt;geekle_&gt;</font> <font color="#000000">Nagios blows for that.</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">ultimately, though, I think nagios has a crappy foundation</font><br>
+<font color="#97974f">&lt;kallistec&gt;</font> <font color="#000000">whack: yeah, the display of alert history needs to be more intelligent also</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">geekle_, if you group properly it's not so bad</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">everything is a host, services are not services, they're "checks" or "tests"</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">geekle_, and add deps</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">but yeah</font><br>
+<font color="#488888">&lt;geekle_&gt;</font> <font color="#000000">Yeah :) Provided they are grouped and have deps :P</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">host obsession is really lame</font><br>
+<font color="#42427e">&lt;ickymettle&gt;</font> <font color="#000000">I would love an API for nagios so bad - ack alerts, submit comments, schedule downtime, disable notifications etc ...</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">especially since most of my tests are "frontend needs to talk to backend" which is really two hosts</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">whack, I think the thing that always brings me back to nagios</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">is that plugins are so f'ing easy</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">I'm not locked into anything </font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">lusis: flapjack supports nagios plugins, iirc</font><br>
+<font color="#4b904b">&lt;joemiller&gt;</font> <font color="#000000">so maybe the problem with most is the model they start from.&nbsp;&nbsp;building a monitoring system today, what would be the best way to build the model</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">whack, hmmm</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">I like NRPE, slightly.</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">heh</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">ickymettle: nagios is still the least crappy of all crappy fault detection systems</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">NCSA is stupid, but useful</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">that doesn't make it good</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">nod</font><br>
+<font color="#42427e">&lt;ickymettle&gt;</font> <font color="#000000">jdixon: I absolutely agree</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">I think if folks wrote prod tests more like unit tests it'd be easier</font><br>
+<font color="#4b904b">&lt;joemiller&gt;</font> <font color="#000000">i think flapjack would be almost perfect if it had some kind of dashboard tha showed me what was up/down.&nbsp;&nbsp;i don't think it does that, no?&nbsp;&nbsp;just kicks off alerts when state changes</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">and yet, 10(?) years later, it's the "best" we have</font><br>
+<font color="#42427e">&lt;ickymettle&gt;</font> <font color="#000000">one thing that is patently clear is despite nagios' faults it actually works</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">ickymettle: yeah</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">brb</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">it _mostly_ works</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">I think most other monitoring efforts are just failtown </font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">they don't take what works in existing systems and innovate elsewhere</font><br>
+<font color="#4d4d93">&lt;portertech&gt;</font> <font color="#000000">I'm going to give flapjack a go, perhaps pick it up back on its feet and get it rolling, continue to use previously create nagios checks w/ cuke/webrat etc</font><br>
+<font color="#42427e">&lt;ickymettle&gt;</font> <font color="#000000">actually I should reword that ... no one has managed to build a system that delivers the same flexibility and function </font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">in an ideal world you'd trend metrics and pick a threshold on a graph</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">anything that exceeds (or invert) that threshold would fire off an event</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">there's your monitoring system.</font><br>
+<font color="#4b904b">&lt;joemiller&gt;</font> <font color="#000000">it's interesting to see the explosion in new tools for managing infrastructure as code, but monitoring/fault detection is still using the equivalent of a 10000 line bash script</font><br>
+<font color="#4d4d93">&lt;portertech&gt;</font> <font color="#000000">in an ideal world, that threshold can be determined for you :)</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">jdixon: not all alerts are trend-based</font><br>
+<font color="#818144">&lt;vvuksan&gt;</font> <font color="#000000">jdixon: picking a threshold is easy</font><br>
+<font color="#4b904b">&lt;joemiller&gt;</font> <font color="#000000">from 10 yrs ago</font><br>
+<font color="#42427e">&lt;ickymettle&gt;</font> <font color="#000000">jdixon: that's what I was heading towards with a system that can "learn" what normal is and alert on anomaly</font><br>
+<font color="#4b904b">&lt;joemiller&gt;</font> <font color="#000000">15 yrs ago</font><br>
+<font color="#818144">&lt;vvuksan&gt;</font> <font color="#000000">the engine behind it is hard</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">reconnoiter is actually pretty close, but none of the fault detection stuff is built in</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">jdixon: and nobody uses reconnoiter because it requires postgres ;)</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">whack: I didn't say that alerts are trend-based</font><br>
+<font color="#42427e">&lt;ickymettle&gt;</font> <font color="#000000">hahaha</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">18:40 &lt; jdixon&gt; in an ideal world you'd trend metrics and pick a threshold on a graph</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">they're metric based</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">^ what I was responding to</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">yes, I know</font><br>
+<font color="#9b519b">&lt;mconigliaro&gt;</font> <font color="#000000">ok, i sorta know what i want, but i cant quite wrap my head around how to implement it. i want something like chef, in the sense that i want to be able to describe monitoring for my environment in pure code.</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">and what I'm saying is that for boolean metrics, you need more details for debugging</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">whack: yeah, reconnoiter is an engineering marvel of complexity</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">"frontend tests fail" is boolean</font><br>
+<font color="#4b904b">&lt;joemiller&gt;</font> <font color="#000000">mcong: agreed</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">where did it fail?</font><br>
+<font color="#9b519b">&lt;mconigliaro&gt;</font> <font color="#000000">im curious if anyone else feels the same way i do</font><br>
+<font color="#4b904b">&lt;joemiller&gt;</font> <font color="#000000">yes</font><br>
+<font color="#42427e">&lt;ickymettle&gt;</font> <font color="#000000">yeah you could almost build out a taxonomy of monitoring types</font><br>
+<font color="#97974f">&lt;kallistec&gt;</font> <font color="#000000">mconigliaro: yeah, if you missed it</font><br>
+<font color="#97974f">&lt;kallistec&gt;</font> <font color="#000000"><a href="https://github.com/danielsdeleo/critical">https://github.com/danielsdeleo/critical</a></font><br>
+<font color="#97974f">&lt;kallistec&gt;</font> <font color="#000000">scroll to the example</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">whack: well, yeah.. a "last known" state engine for booleans</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">back</font><br>
+<font color="#818144">&lt;vvuksan&gt;</font> <font color="#000000">sure I'd like to build something better but that's a lot of work</font><br>
+<font color="#42427e">&lt;ickymettle&gt;</font> <font color="#000000">you've got boolean (broke, not broke), trending - (within thresh/out of thresh) etc ...</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">vvuksan, I was thinking that maybe we can spawn some ideas and attack it more modular</font><br>
+<font color="#818144">&lt;vvuksan&gt;</font> <font color="#000000">thus many have failed</font><br>
+<font color="#9b519b">&lt;mconigliaro&gt;</font> <font color="#000000">kallistec: yes, something like that</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">ickymettle: and most of my checks have details in the output that areuseful for debugging</font><br>
+<font color="#42427e">&lt;ickymettle&gt;</font> <font color="#000000">oh absolutely</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">vvuksan: that's why we(?) need to focus on components with standard interfaces</font><br>
+<font color="#818144">&lt;vvuksan&gt;</font> <font color="#000000">lusis: sure but someone has to have the high level vision</font><br>
+<font color="#4b904b">&lt;joemiller&gt;</font> <font color="#000000">can't you view boolean as a treshhold?&nbsp;&nbsp;something is mostly OK, then it changes to BAD. that is outside the OK threshold =)</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">vvuksan, like "hey I've got this really cool alerting engine based on a rule set"</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">there's been a *lot* of work to that effect lately</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">vvuksan, but I hear ya</font><br>
+<font color="#42427e">&lt;ickymettle&gt;</font> <font color="#000000">an "event" should kinda have a state and some easily parsable debugging output</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">joemiller: right, what I'm saying is there's other data attached to each check that is not just a metric</font><br>
+<font color="#42427e">&lt;ickymettle&gt;</font> <font color="#000000">and performance output</font><br>
+<font color="#42427e">&lt;ickymettle&gt;</font> <font color="#000000">nagios got it kinda close with the perfdata</font><br>
+<font color="#818144">&lt;vvuksan&gt;</font> <font color="#000000">lusis: I just don't think you can attack it piecemeal</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">vvuksan, hrmmm</font><br>
+<font color="#4b904b">&lt;joemiller&gt;</font> <font color="#000000">whack, aye, i understand, and agree</font><br>
+<font color="#4d4d93">&lt;portertech&gt;</font> <font color="#000000">who has btried mcollective for active checks?</font><br>
+<font color="#4b904b">&lt;joemiller&gt;</font> <font color="#000000">Volcane has =)</font><br>
+<font color="#818144">&lt;vvuksan&gt;</font> <font color="#000000">you have to have a high level vision </font><br>
+<font color="#42427e">&lt;ickymettle&gt;</font> <font color="#000000">it's just imeplemented completely differently for nearly every check (unless they've followed the actual perfdata spec)</font><br>
+<font color="#818144">&lt;vvuksan&gt;</font> <font color="#000000">you can certainly decide which features to attack first</font><br>
+<font color="#818144">&lt;vvuksan&gt;</font> <font color="#000000">which is only prudent</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">ickymettle: meh, I think perfdata is a special case of something that's not a special case</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">I'll be honest I like mcollective but it's too many moving parts for me right now</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">check "fail" is a metric, just like "how long this took" even if it's the same script</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">no offense to ANY work that Volcane has done</font><br>
+<font color="#818144">&lt;vvuksan&gt;</font> <font color="#000000">but still doing piece by piece may be counterproductive. Dunno</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">vvuksan, gotcha</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">I disagree</font><br>
+<font color="#4d4d93">&lt;portertech&gt;</font> <font color="#000000">lusis: agreed, unless that part of your infra is already in place for other uses</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">it avoids lock-in</font><br>
+<font color="#4d4d93">&lt;portertech&gt;</font> <font color="#000000">if you are a heavy puppet user etc</font><br>
+<font color="#42427e">&lt;ickymettle&gt;</font> <font color="#000000">I kinda liked the concept of splitting the event colelction/correlation/alerting and the actual scheduling/execution of the checks</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">portertech, I don't even run my own chef server</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">increases competition </font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">ickymettle: +1</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">but I want to able to drive WHATEVER from chef/puppet</font><br>
+<font color="#4d4d93">&lt;portertech&gt;</font> <font color="#000000">lusis: me neither, well, an old 0.7.x is kicking around on gentoo :P</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">ickymettle: oh hey, great idea. wish I'd said that. ;)</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">schedule checks, ship results somewhere, have somethign else react to the data</font><br>
+<font color="#42427e">&lt;ickymettle&gt;</font> <font color="#000000">those big enterprise guys were all over it</font><br>
+<font color="#42427e">&lt;ickymettle&gt;</font> <font color="#000000">I was really excited for rivermuse</font><br>
+<font color="#4b904b">&lt;joemiller&gt;</font> <font color="#000000">whack, aye, that's what i liked about flapjack</font><br>
+<font color="#42427e">&lt;ickymettle&gt;</font> <font color="#000000">which basically was an event collection/correlation engine</font><br>
+<font color="#97974f">&lt;kallistec&gt;</font> <font color="#000000">whack: yeah that's the approach I'm taking</font><br>
+<font color="#4d4d93">&lt;portertech&gt;</font> <font color="#000000">lusis: you have a bot or a transcript of all of this right?</font><br>
+<font color="#42427e">&lt;ickymettle&gt;</font> <font color="#000000">cos what i'd like in an "alerting system"</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">portertech, lemme make sure but yeah</font><br>
+<font color="#42427e">&lt;ickymettle&gt;</font> <font color="#000000">is something that can take inputs from all over the place</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">my client is logging</font><br>
+<font color="#4d4d93">&lt;portertech&gt;</font> <font color="#000000">me too</font><br>
+<font color="#97974f">&lt;kallistec&gt;</font> <font color="#000000">whack: but what about rescheduling checks on shorter interval after failure?</font><br>
+<font color="#42427e">&lt;ickymettle&gt;</font> <font color="#000000">for instance: a chef handler that fires an event into this "collector" when a resouce fails or an exception is thrown</font><br>
+<font color="#818144">&lt;vvuksan&gt;</font> <font color="#000000">what I think people are missing out is that basic stuff like result checking then sending alert is an easy piece of the puzzle</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">we're good</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">kallistec: depends on how you implement it</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">vvuksan, so what's the most complex part then?</font><br>
+<font color="#818144">&lt;vvuksan&gt;</font> <font color="#000000">problem because all the other "unsexy" pieces of the puzzle</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">maybe I missed it</font><br>
+<font color="#42427e">&lt;ickymettle&gt;</font> <font color="#000000">you have someother scheduler that is running active tests + trending stuff etc ... feeds back again into a central collector</font><br>
+<font color="#42427e">&lt;ickymettle&gt;</font> <font color="#000000">throwing my crazy guy haton</font><br>
+<font color="#42427e">&lt;ickymettle&gt;</font> <font color="#000000">with all this event data in one place</font><br>
+<font color="#818144">&lt;vvuksan&gt;</font> <font color="#000000">like notification intervals, service dependencies etc. etc.</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">I mean, you could just dto scheduling with a shell script and at(8)</font><br>
+<font color="#818144">&lt;vvuksan&gt;</font> <font color="#000000">these are not hard</font><br>
+<font color="#42427e">&lt;ickymettle&gt;</font> <font color="#000000">you could start doing really interesting correlations on the "why"</font><br>
+<font color="#97974f">&lt;kallistec&gt;</font> <font color="#000000">whack: wdym? what should it look like IYO?</font><br>
+<font color="#818144">&lt;vvuksan&gt;</font> <font color="#000000">just not very sexy to implement</font><br>
+<font color="#4b904b">&lt;joemiller&gt;</font> <font color="#000000">i think it's the configuration that is not sexy</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">vvuksan, I'd be happy to do that stuff myself</font><br>
+<font color="#4b904b">&lt;joemiller&gt;</font> <font color="#000000">keeping configuration aligned with reality</font><br>
+<font color="#42427e">&lt;ickymettle&gt;</font> <font color="#000000">oh our apaches just dropped req/sec - oh look chef pushed an APC change to those boxes 10 secs agao then it all blew up</font><br>
+<font color="#4b904b">&lt;joemiller&gt;</font> <font color="#000000">it's like dev guys who would rather write code than write tests.</font><br>
+<font color="#488888">&lt;geekle_&gt;</font> <font color="#000000">My crazy guy hat involves nodes writting data to a message bus and "super nodes" pick the data up.</font><br>
+<font color="#97974f">&lt;kallistec&gt;</font> <font color="#000000">vvuksan: yeah, the deps between services are hard to implement</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">geekle_, you just invented skype ;)</font><br>
+<font color="#488888">&lt;geekle_&gt;</font> <font color="#000000">Each super node has a role (or multiple roles)... alerting, dash, charting, trending etc.</font><br>
+<font color="#818144">&lt;vvuksan&gt;</font> <font color="#000000">also just the sheer amount of testing required to write something from scratch</font><br>
+<font color="#488888">&lt;geekle_&gt;</font> <font color="#000000">lusis: OMFG BBQ :P</font><br>
+<font color="#818144">&lt;vvuksan&gt;</font> <font color="#000000">address all the edge cases is not for the faint of heart</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">kallistec, vvuksan don't our CM tools already cover that?</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">to some degree?</font><br>
+<font color="#42427e">&lt;ickymettle&gt;</font> <font color="#000000">FYI: rivermuse I mentioned earlier .... it's "kinda" OSS built by ex-enterprise dudes but it is interesting <a href="http://www.rivermuse.com/products/overview/">http://www.rivermuse.com/products/overview/</a></font><br>
+<font color="#42427e">&lt;ickymettle&gt;</font> <font color="#000000">heavy on the ITIL speak</font><br>
+<font color="#818144">&lt;vvuksan&gt;</font> <font color="#000000">lusis: perhaps</font><br>
+<font color="#818144">&lt;vvuksan&gt;</font> <font color="#000000">lusis: but you'd have to figure out/test it</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">vvuksan, yeah</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">geekle_, heh</font><br>
+<font color="#818144">&lt;vvuksan&gt;</font> <font color="#000000">IMO this is why many projects have failed</font><br>
+<font color="#97974f">&lt;kallistec&gt;</font> <font color="#000000">lusis: yeah, even if you have the info, it's something that the more centralized alert dispatcher dude has to know</font><br>
+<font color="#42427e">&lt;ickymettle&gt;</font> <font color="#000000">one thing nagios has is 10-15 years of trust</font><br>
+<font color="#818144">&lt;vvuksan&gt;</font> <font color="#000000">ickymettle: ++</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">ickymettle: it's not trust</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">ickymettle, yep</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">it's lack of competition</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">jdixon, nah</font><br>
+<font color="#488888">&lt;geekle_&gt;</font> <font color="#000000">ickymettle: aye.</font><br>
+<font color="#42427e">&lt;ickymettle&gt;</font> <font color="#000000">well sorry not trust per-se but battlefield experience</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">"acceptance"</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">jdixon, acceptance is better ;)</font><br>
+<font color="#42427e">&lt;ickymettle&gt;</font> <font color="#000000">you can be pretty confident if configured right it will largely work</font><br>
+<font color="#97974f">&lt;kallistec&gt;</font> <font color="#000000">jdixon: there's a bit of a leap of faith to say this thing will wake me up when shit goes wrong</font><br>
+<font color="#818144">&lt;vvuksan&gt;</font> <font color="#000000">cause again what if your alerter fails :-)</font><br>
+<font color="#97974f">&lt;kallistec&gt;</font> <font color="#000000">instead of crashing</font><br>
+<font color="#42427e">&lt;ickymettle&gt;</font> <font color="#000000">and we've "accepted" the limitations/issues/weaknesses </font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">watching the watchers and all that</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">vvuksan, that's a bit too meta for my tastes right now</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">watching the..</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">what he said</font><br>
+<font color="#4b904b">&lt;joemiller&gt;</font> <font color="#000000">CVS has battlefield experience but no one uses it anymore</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">:)</font><br>
+<font color="#42427e">&lt;ickymettle&gt;</font> <font color="#000000">joemiller: but there are viable working alternatives</font><br>
+<font color="#4b904b">&lt;joemiller&gt;</font> <font color="#000000">competition? =)</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">okay so quick round the room kind of thing</font><br>
+<font color="#4b904b">&lt;joemiller&gt;</font> <font color="#000000">viable being the key word, i suppose</font><br>
+<font color="#42427e">&lt;ickymettle&gt;</font> <font color="#000000">well look at the mess DVCS competition is now</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">time to organize a RFC for a modern commodotized monitoring standards?</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">two things you like about nagios</font><br>
+<font color="#42427e">&lt;ickymettle&gt;</font> <font color="#000000">git kinda rising to the top</font><br>
+<font color="#818144">&lt;vvuksan&gt;</font> <font color="#000000">also look at Icinga</font><br>
+<font color="#818144">&lt;vvuksan&gt;</font> <font color="#000000">they started off somewhat strong</font><br>
+<font color="#42427e">&lt;ickymettle&gt;</font> <font color="#000000">but man do I hate it when I run into something in bazzar or mercurial</font><br>
+<font color="#818144">&lt;vvuksan&gt;</font> <font color="#000000">but things have kinda stalled</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">vvuksan, they had a tainted start</font><br>
+<font color="#818144">&lt;vvuksan&gt;</font> <font color="#000000">it's an improvement</font><br>
+<font color="#4b904b">&lt;joemiller&gt;</font> <font color="#000000">nagios:&nbsp;&nbsp;1) ease/speed of writing monitors</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">you have new projects coming out every day doing the same sort of stuff as ganglia/graphite</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">reinventing their own storage format</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">stupid</font><br>
+<font color="#42427e">&lt;ickymettle&gt;</font> <font color="#000000">what was that other french packaging of nagios</font><br>
+<font color="#818144">&lt;vvuksan&gt;</font> <font color="#000000">yep</font><br>
+<font color="#488888">&lt;geekle_&gt;</font> <font color="#000000">lusis: 1) Service/Host Relationships/Deps 2) Escalation</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">look at the mozilla projects</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">jdixon, I think graphing/display is covered</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">project</font><br>
+<font color="#42427e">&lt;ickymettle&gt;</font> <font color="#000000">I can't recall the name right now</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">lusis: point is, fault detection can use the same format</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">jdixon, right</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">if people stop reinventing it</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">accept a simple standard</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">lusis: 1) I already know how to use it, 2) ... ?</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">anyone else?</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">heh</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">and work on the HARD stuff in parallel</font><br>
+<font color="#4b904b">&lt;joemiller&gt;</font> <font color="#000000">hrm, graphing nagios checks</font><br>
+<font color="#97974f">&lt;kallistec&gt;</font> <font color="#000000">lusis: nagios has all the plugins</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">geekle_: I use neither of those features, hehe</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">nagios -&gt; perfdata -&gt; pnp4nagios -&gt; rrd -&gt; graphite</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">kallistec, and perfdata to boot</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">I barely use any of the default plugins in nagios, too</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">jdixon, that's a fucking fucked up workflow</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">not really</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">I don't care abput cpu usage, etc.</font><br>
+<font color="#97974f">&lt;kallistec&gt;</font> <font color="#000000">lusis: and new ones get written for it because it's the winner</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">we already used nagios</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">check_http is useful, I suppose</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">so we added pnp4nagios</font><br>
+<font color="#42427e">&lt;ickymettle&gt;</font> <font color="#000000">lusis: agree</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">which creates rrd</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">but pnp4nagios works</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">then we tossed graphite on there</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">roughly</font><br>
+<font color="#488888">&lt;geekle_&gt;</font> <font color="#000000">lusis: 3) Nagios plugins... So easy to write too.</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">now we have advanced correlation</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">jdixon, ahh okay</font><br>
+<font color="#4b904b">&lt;joemiller&gt;</font> <font color="#000000">geekle_, you only get 2 =)</font><br>
+<font color="#488888">&lt;geekle_&gt;</font> <font color="#000000">:D</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">hahaha</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">lusis: I don't LIKE it, but it's cheap and moderately useful</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">true enough, exit codes are pretty easy to manage.</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">whack, yep</font><br>
+<font color="#42427e">&lt;ickymettle&gt;</font> <font color="#000000">one thing that conceptually bothers me is we have nagios running all these checks and alerting, then we have graphite AND ganglia running collecting data but we action that manually</font><br>
+<font color="#42427e">&lt;ickymettle&gt;</font> <font color="#000000">"look at that spike"</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">it would be great to have a full feature matrix of all OSS monitoring/trending software</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">ickymettle, that's why I want a "mini nagios" for just alerting</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">so we could look at the best of breed</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">and see what fits</font><br>
+<font color="#4b904b">&lt;joemiller&gt;</font> <font color="#000000">lusis, flapjack</font><br>
+<font color="#42427e">&lt;ickymettle&gt;</font> <font color="#000000">then a bunch of dudes scramble for a while to see what might have caused it</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">lusis: isn't that mon?</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">jdixon, well escalations and deps too</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">pageeduty ;)</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">there's a core of nagios that I'd love to just be able to talk to with an API</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">er, pagerduty</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">where the fuck is halligan?</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">lusis: I'd prefer not nagios since I don't think in "hosts"</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">whack: agreed, but most people still do. sigh.</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">and nagios calls "services" what I do not.</font><br>
+<font color="#42427e">&lt;ickymettle&gt;</font> <font color="#000000">I guess what i'm getting at is we collect all this data in different places and there are relationships in there - this is probbaly going above and beyond but looking at ways to look for these relationships would be a big monitoring win IMHO</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">whack, yeah totally</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">"check_tcp" is not a service.</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">it's a check.</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">it's all about the metrics.</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">I have like 20 "services" to make sure our SOLR backends are happy at loggly.</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">ickymettle, right I'm big on not double-dipping</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">I only want to collect once</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">I NEED THE DATA, BITCHES.</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">hahaha</font><br>
+<font color="#488888">&lt;geekle_&gt;</font> <font color="#000000">"It's all about the metrics baby"</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">indeed</font><br>
+<font color="#488888">&lt;geekle_&gt;</font> <font color="#000000">collect once and collect often IMHO</font><br>
+<font color="#42427e">&lt;ickymettle&gt;</font> <font color="#000000">saying goodbye to munin was the best thing ever</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">anyone interested in working towards some documented "standards" to help identify interchangeable components?</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">jdixon, feck standards</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">jk</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">jdixon: so long as that documentation documents existing things</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">you know what I mean</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">not new things</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">sorry, I put on my ben black hat for a minute</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">;)</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">not a fucking standards org</font><br>
+<font color="#CC00CC">*lusis pokes</font><br>
+<font color="#488888">&lt;geekle_&gt;</font> <font color="#000000">brb</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">motivate developers to work towards interchangeable pieces and standards</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">increase competition on a micro scale</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">hmmmmm</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">don't give us macro monitoring projects</font><br>
+<font color="#42427e">&lt;ickymettle&gt;</font> <font color="#000000">oh god wasn't there some CIM (Common Information Model) or something a lot of those big monitoring vendors used to rant on about</font><br>
+<font color="#97974f">&lt;kallistec&gt;</font> <font color="#000000">jdixon: you could do that maybe on inputs to trending software</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">give us useful pieces that excel at one thing</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">ickymettle, yeah heh</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">kallistec: exactly</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">ickymettle, someone brought it up when I posted on the mailing list one time</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">get rid of the incompatible formats/mechanisms that suck</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">the problem is a "market" of big monitoring suites that all SUCK at something</font><br>
+<font color="#97974f">&lt;kallistec&gt;</font> <font color="#000000">jdixon: as far as fault detection/alerting stuff, I think you can see from this discussion there's a lot of area to be explored as far as what the boundaries are between components</font><br>
+<font color="#42427e">&lt;ickymettle&gt;</font> <font color="#000000">unfrotunately mos of the time they suck at monitoring</font><br>
+<font color="#42427e">&lt;ickymettle&gt;</font> <font color="#000000">hehe</font><br>
+<font color="#97974f">&lt;kallistec&gt;</font> <font color="#000000">and what information goes between them</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">okay another round robing</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">s/robing/robin</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">what ARE the components?</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">just for summations sake</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">one line if possible ;)</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">metrics collection</font><br>
+<font color="#42427e">&lt;ickymettle&gt;</font> <font color="#000000">collection / correlation / alerting / command + control</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">storage (caching and persistence)</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">state engine</font><br>
+<font color="#42427e">&lt;ickymettle&gt;</font> <font color="#000000">scheduling</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">fault detection (threshhold rules)</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">notifications (state engine)</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">notifications (output)</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">escalations</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">dependencies</font><br>
+<font color="#CC00CC">*lusis smacks jdixon</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">api</font><br>
+<font color="#CC00CC">*jdixon stfu's?</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">hahaha</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">kallistec? whack?</font><br>
+<font color="#97974f">&lt;kallistec&gt;</font> <font color="#000000">hrm</font><br>
+<font color="#97974f">&lt;kallistec&gt;</font> <font color="#000000">you need all of those things</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">graphing</font><br>
+<font color="#97974f">&lt;kallistec&gt;</font> <font color="#000000">some of them are more tightly coupled than others</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">dashboard</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">regression analytics (cap plan)</font><br>
+<font color="#97974f">&lt;kallistec&gt;</font> <font color="#000000">does that mean they go in one application?</font><br>
+<font color="#488888">&lt;geekle_&gt;</font> <font color="#000000">ickymettle++</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">kallistec, good question.</font><br>
+<font color="#97974f">&lt;kallistec&gt;</font> <font color="#000000">if you do, some features work better</font><br>
+<font color="#42427e">&lt;ickymettle&gt;</font> <font color="#000000">that's a critical question</font><br>
+<font color="#97974f">&lt;kallistec&gt;</font> <font color="#000000">but you have less flexibility in design</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">so exitcode 2 then</font><br>
+<font color="#42427e">&lt;ickymettle&gt;</font> <font color="#000000">is it one app to do EVERYTHING</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">=P</font><br>
+<font color="#42427e">&lt;ickymettle&gt;</font> <font color="#000000">or interoperability</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">ickymettle, I don't think it can be</font><br>
+<font color="#42427e">&lt;ickymettle&gt;</font> <font color="#000000">agree</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">I think some API is key though</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">and that whatever components exist</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">realize this fact</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">they aren't the system of record</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">I mean they COULD be to some people</font><br>
+<font color="#97974f">&lt;kallistec&gt;</font> <font color="#000000">for example, critical doesn't have a state machine yet. I could put it on the client, but then you can't easily modify via api</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">kallistec, I'm going to take a look at critical a bit tomorrow</font><br>
+<font color="#97974f">&lt;kallistec&gt;</font> <font color="#000000">or, the hypothetical server could ping you back and say "that's broken, check it more"</font><br>
+<font color="#97974f">&lt;kallistec&gt;</font> <font color="#000000">but that introduces more complexity into the design</font><br>
+<font color="#97974f">&lt;kallistec&gt;</font> <font color="#000000">as just one example</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">I see why whack got quiet</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">he's off benchmarking netty</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">;)</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">hah</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">I have twitter wired directly into my brain </font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">anyway</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">heh</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">okay so anything else? I figured a brain dump of random shit was a good first start</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">jdixon, I'll try some sort of matrix like you mentioned</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">hopefully this weekend</font><br>
+<font color="#97974f">&lt;kallistec&gt;</font> <font color="#000000">lusis: yeah, one more thing</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">lusis: github it?</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">kallistec, yessir?</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">jdixon, good call</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">lusis: I was recently working on some new monitoring stuff to replace nagios with</font><br>
+<font color="#97974f">&lt;kallistec&gt;</font> <font color="#000000">ppl ask about testing chef cookbooks all the time</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">decided I hated myself, so I used node.js</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">whack, hahaha</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">15 minutes later, I gave up.</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">whack: did you see the mozilla thing?</font><br>
+<font color="#97974f">&lt;kallistec&gt;</font> <font color="#000000">but the rejoinder is that's just monitoring</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">jdixon: mozilla thing?</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000"><a href="http://graphs-new.mozilla.org/">http://graphs-new.mozilla.org/</a></font><br>
+<font color="#97974f">&lt;kallistec&gt;</font> <font color="#000000">so one thing I'm interested in is making it easy to use something as both</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">another reinvented wheel</font><br>
+<font color="#97974f">&lt;kallistec&gt;</font> <font color="#000000">i.e. run all the checks against this box</font><br>
+<font color="#97974f">&lt;kallistec&gt;</font> <font color="#000000">rspec style if you will</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">jdixon: notice how there's no host obsession with those graphs?</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">gasp</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">metrics</font><br>
+<font color="#97974f">&lt;kallistec&gt;</font> <font color="#000000">then in prod you run them scheduled</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">without</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">a</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">host</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">heh</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">I know</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">!?!</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">fucking nagios :(</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">kallistec, hmmmm</font><br>
+<font color="#97974f">&lt;kallistec&gt;</font> <font color="#000000">i.e., development integration tests are difficult to make into monitoring</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">kallistec: yeah, or in my case "run all checks for this service"</font><br>
+<font color="#42427e">&lt;ickymettle&gt;</font> <font color="#000000">what are those mozilla graphs measuring ?</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">ickymettle, data visualization suckage</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">;)</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">seriously</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">ickymettle: likely crash metrics</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">ahh</font><br>
+<font color="#97974f">&lt;kallistec&gt;</font> <font color="#000000">whack: eh, it's semantics to me at this point ;) "host" = [service1, service2...]</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">or perhaps test results</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">kallistec: nod, but in the case of horizontal services, one host is not worth checking</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">"How is my hadoop cluster doing?"</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">vs "How is node 3 doing?"</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">whack, I think the guy with 3 nodes in his LB would disagree ;)</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">business metrics want "How is my hadoop cluster performing?"</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">so you alert on that.</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">cause that's 33% of his capacity lost</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">when there's a problem, you want "How is node 3 doing?" for debugging</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">I could care less about "how is my X service doing"</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">what I want to know is "what X is causing failure on Y?"</font><br>
+<font color="#97974f">&lt;kallistec&gt;</font> <font color="#000000">whack: I think you still want it, if you buy in to running all your checks as verification that your config mgmt did what it should do</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">kallistec:&nbsp;&nbsp;and what if your config management is what pushes your monitoring config?</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">(like mine does)</font><br>
+<font color="#CC00CC">*jdixon avoids rant on business metrics vs IT metrics</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">jdixon: business metrics are for alerting, IT metrics are for debugging</font><br>
+<font color="#97974f">&lt;kallistec&gt;</font> <font color="#000000">whack: yeah, mine does as well</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">and maybe capacity plans or such</font><br>
+<font color="#97974f">&lt;kallistec&gt;</font> <font color="#000000">it's a tricky case at that edge</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">there's value in the intersection</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">IT metrics are for business</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">they're one and the same</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">the point is TO FUCKING MAKE MONEY</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">IT is there to support your business, not vice versa</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">jdixon: "load average on node253235 is greater than 3.4!!!" is not a business metric</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">"what is causing my servers to slow down and stop selling shit, causing me Y lost sales per hour"</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">"ad click throughs dropped 30% after we deployed an hour ago"</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">jdixon, EC2</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">;)</font><br>
+<font color="#97974f">&lt;kallistec&gt;</font> <font color="#000000">whack: anyway, the example I'm getting at is you push bad config to 1/N, detect that it sucked and stop rolling through</font><br>
+<font color="#CC00CC">*jdixon smacks lusis with a whack </font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">hahahaha</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">kallistec, ahhh I see where you're going now</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">I was a bit fuzzy</font><br>
+<font color="#97974f">&lt;kallistec&gt;</font> <font color="#000000">the overall system will hardly notice unless you're at/near 100%</font><br>
+<font color="#97974f">&lt;kallistec&gt;</font> <font color="#000000">in which case you're screwed anyway</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">From my point of view, what would help me&nbsp;&nbsp;write code if I decided to reinvent a monitoring wheel, is some list of what folks wanted to do</font><br>
+<font color="#97974f">&lt;kallistec&gt;</font> <font color="#000000">all the existing work in this area focuses on reusing testing tools, but the impedance mismatch there is lame</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">like "What I want monitoried and how I want to interact with it"</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">whack, I think the problem there is that it's too big of a pool</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">like, I'd love to have a "false alarm!" button.</font><br>
+<font color="#42427e">&lt;ickymettle&gt;</font> <font color="#000000">that kinda comes back to being able to correlate more that just checkes</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">what would you do with the false alarm button?</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">have it learn from it?</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">lusis: track it, get a report later that says "this check is noisy"</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">rather than having folks bitch about how nagios sucks</font><br>
+<font color="#42427e">&lt;ickymettle&gt;</font> <font color="#000000">each week in our monitor review it's like ... oh yeah 80% of those criticals were changes we made rather than real problems</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">I'd see "this check sucks"</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">whack, gotcha</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">there's no feedback </font><br>
+<font color="#97974f">&lt;kallistec&gt;</font> <font color="#000000">yeah, that would be dope</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">other than a coworker going "Fucking pagerdugy woke me up at 3am again"</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">"and it went away by the time I checked it"</font><br>
+<font color="#97974f">&lt;kallistec&gt;</font> <font color="#000000">lol, each monitor can have a "dislike" button</font><br>
+<font color="#42427e">&lt;ickymettle&gt;</font> <font color="#000000">so if we could say .. "this cookbook change modified httpd.conf and they went boom" can tag that as we broke</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">kallistec: hah</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">hook that shit up with facebook</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">"like"</font><br>
+<font color="#97974f">&lt;kallistec&gt;</font> <font color="#000000">and you can unfriend them</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">kallistec, sounds like datadog ;)</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">kallistec, combine yammer/facebook with graphite</font><br>
+<font color="#42427e">&lt;ickymettle&gt;</font> <font color="#000000">oh man if you could solve the "and it went away by the time I checked it" problem this new monitoring system would be a winner haha</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">so</font><br>
+<font color="#42427e">&lt;ickymettle&gt;</font> <font color="#000000">new definition of "social graph"</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">you're asking for a diaspora-based monitoring tool</font><br>
+<font color="#97974f">&lt;kallistec&gt;</font> <font color="#000000">ickymettle: well, the answer is to build useful metrics into your app</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">yes, the social aspect is useful only to a subset</font><br>
+<font color="#97974f">&lt;kallistec&gt;</font> <font color="#000000">sadly, by the time you REALLY need it, it's too late</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">"I didn't get that alert because I didn't friend it"</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">I like this.</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">hahahaha</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">the biggest problem with nagios is the degredation/abstration of data</font><br>
+<font color="#42427e">&lt;ickymettle&gt;</font> <font color="#000000">going back to new relic one feature that was kinda nice is the ability to annotate graphs</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">ickymettle: yeah</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">indeed</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">ickymettle, that's what datadog is doing too</font><br>
+<font color="#488888">&lt;geekle_&gt;</font> <font color="#000000">Crowdsourced monitoring tool?</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">oncall can click and mark notes and such</font><br>
+<font color="#488888">&lt;geekle_&gt;</font> <font color="#000000">:D</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">that was on my circonus roadmap. sigh.</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">take that and add in a discussion thread</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">annotating events is huge</font><br>
+<font color="#97974f">&lt;kallistec&gt;</font> <font color="#000000">yeah, as far as graphs, what you need is multiple y axis scales also</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">kallistec: indeed</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">reconnoiter does that</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000"><a href="http://www.datadoghq.com/">http://www.datadoghq.com/</a></font><br>
+<font color="#97974f">&lt;kallistec&gt;</font> <font color="#000000">saddest part about graphite</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">kallistec: I'm working on that for graphite.</font><br>
+<font color="#97974f">&lt;kallistec&gt;</font> <font color="#000000">though it's just the front end</font><br>
+<font color="#97974f">&lt;kallistec&gt;</font> <font color="#000000">jdixon: rock on man</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">re: dashboarding; a friend of mine is/was working on a dashboard tool for graphite</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">take a number :-P</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000"><a href="https://github.com/fetep/pencil">https://github.com/fetep/pencil</a></font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">no idea what the status is</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">anyone see the project danryan is working on?</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000"><a href="https://github.com/danryan/overwatch">https://github.com/danryan/overwatch</a></font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">kallistec, hahhaha</font><br>
+<font color="#42427e">&lt;ickymettle&gt;</font> <font color="#000000">pencil needs screenshots :(</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">okay so something that would help</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">overwatch sounds like a weaker version of esper</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">run off some project names</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">links</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">whatever</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">ESPER</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">so I have it</font><br>
+<font color="#42427e">&lt;ickymettle&gt;</font> <font color="#000000">one thing I just realised in this entire discussion "hard to configure" was never mentioned</font><br>
+<font color="#42427e">&lt;ickymettle&gt;</font> <font color="#000000">IMHO nagios isn't hard to configure</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">ickymettle: nod</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">ickymettle: when I said "hard to deploy", that's what I meant</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">cacti wins worst</font><br>
+<font color="#CC00CC">*jdixon shudders</font><br>
+<font color="#42427e">&lt;ickymettle&gt;</font> <font color="#000000">it's verbose but not hard ... but almost every single "new monitoring" project starts with "nagios is so hard to configure" as one of the goals they want to fix</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">ickymettle, I think the prevaling thought is configuration would be driven outside</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">or anything without a web-ui-only configuration</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">ickymettle: yeah</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">on the scale of things, configuring nagios is easy</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">ickymettle, just an assumption that any "new" tool would have "an api"</font><br>
+<font color="#97974f">&lt;kallistec&gt;</font> <font color="#000000">ickymettle: eh, sorta, there's a whole lot of nagios worldview you need to buy into to get it</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">lusis: yeah you can still do that by generating a config file.</font><br>
+<font color="#42427e">&lt;ickymettle&gt;</font> <font color="#000000">lusis: in my previous gig I had puppet automatically configuring services in nagios when they are deployed</font><br>
+<font color="#97974f">&lt;kallistec&gt;</font> <font color="#000000">and then it's super easy</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">kallistec: yes</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">ickymettle, same here</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">wouldn't it be cool to have something like Sass for nagios?</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">I don't like the worldview of nagios, but otherwise it's easy</font><br>
+<font color="#42427e">&lt;ickymettle&gt;</font> <font color="#000000">so deploy ssh on a box it automagically gets a service check added ...</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">jdixon: you mean sass for monitoring.</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">well, sorta</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">a preprocessor for nagios configs</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">meh</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">I haven't hand-written nagios configs, ever.</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">puppet always generates them for me</font><br>
+<font color="#CC00CC">*jdixon bows before whack </font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">whether th built-in nagios_* types or with a template</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">s/bows/kneels/</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">Kneel before Zod.</font><br>
+<font color="#97974f">&lt;kallistec&gt;</font> <font color="#000000">heh</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">but you know, generating requires coding skills</font><br>
+<font color="#42427e">&lt;ickymettle&gt;</font> <font color="#000000">yeah we've just started getting chef to setup nagios checks for us too now</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">and I totally don't expect sysadmins to have that everywhere</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">whack: hey, at least I KNOW I'm your bitch. I'm one step ahead of everyone else.</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">which is why nagios supports those crazy "template" stuffs</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">which is totally awesome if you can't code but understand nesting things like that</font><br>
+<font color="#42427e">&lt;ickymettle&gt;</font> <font color="#000000">chef + nagios config automation is much cleaner than the puppet mess</font><br>
+<font color="#97974f">&lt;kallistec&gt;</font> <font color="#000000">lol</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">ickymettle: to each his own ;)</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">NO TOOL WARS</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">=P</font><br>
+<font color="#42427e">&lt;ickymettle&gt;</font> <font color="#000000">:)</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">we all know "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; " wins</font><br>
+<font color="#42427e">&lt;ickymettle&gt;</font> <font color="#000000">I hate both of them equally</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">have we covered the major bits?</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">I have some wireframing to do. :-P</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">jdixon, I think so. For now I'm going to raw dump the log to a repo</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">yay</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">so if anyone has any final words?</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">heh</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">Suck it.</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">was this a bitch session, or do we have a vague goal in mind?</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">jdixon: you're supposed to ask for the agenda BEFORE the meeting</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">GOSH</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">orite</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">jdixon, I need to hire a few consultants from IBM to answer that</font><br>
+<font color="#97974f">&lt;kallistec&gt;</font> <font color="#000000">jdixon: lol, was pretty helpful to me</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">have some meetings</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">;)</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">honestly though</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">I just wanted a brain dump from everyone who wanted to participate</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">for the first run anyway</font><br>
+<font color="#488888">&lt;geekle_&gt;</font> <font color="#000000">brain dump was a good idea.</font><br>
+<font color="#42427e">&lt;ickymettle&gt;</font> <font color="#000000">yup</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">I hate getting caught in semantic confusion</font><br>
+<font color="#42427e">&lt;ickymettle&gt;</font> <font color="#000000">I actually have an idea i'm gonna go and hack on now</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">I say monitoring</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">you hear "metrics"</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">holy shit that was a lot of dumping</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">that kind of bullshit</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">lusis: also probably worth reviewing "in house" tools?</font><br>
+<font color="#488888">&lt;geekle_&gt;</font> <font color="#000000">Be back later.</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">whack, define in house for me</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">heh</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">lusis: like, look at what everyone else uses internally-built stuff that blogs about</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">ahh right</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">ickymettle: I expect you etsy peeps to put all those magic scripts up on github now.</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">the ones you've been holding out on. ;)</font><br>
+<font color="#CC00CC">*jdixon loves starting rumors</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">jdixon, +1000</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">whack, okay I gotcha</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">I've got some stuff in evernote I can try and dump</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">not sure the best way for people to add that shit except fork a fucking text file </font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">hehe</font><br>
+<font color="#8c4a4a">&lt;whack&gt;</font> <font color="#000000">lusis: mostly because in-house is usally solving "Shit sucks, we'll do it better for our needs"</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">need a shared delicious</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">or something</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">whack, totally</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">hrmmm</font><br>
+<font color="#42427e">&lt;ickymettle&gt;</font> <font color="#000000">is a summary of the chat a better starting point? or the raw log</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">everyone gimme your github usernames real quick</font><br>
+<font color="#42427e">&lt;ickymettle&gt;</font> <font color="#000000">ickymettle</font><br>
+<font color="#97974f">&lt;kallistec&gt;</font> <font color="#000000">danielsdeleo</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">ickymettle, for now I'm going to add just the log dump</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">I'll create a markdown as soon as I can</font><br>
+<font color="#42427e">&lt;ickymettle&gt;</font> <font color="#000000">np</font><br>
+<font color="#97974f">&lt;kallistec&gt;</font> <font color="#000000">it's in the damn log already!!</font><br>
+<font color="#42427e">&lt;ickymettle&gt;</font> <font color="#000000">need a collaborative mindmap</font><br>
+<font color="#4d4d93">&lt;portertech&gt;</font> <font color="#000000">back</font><br>
+<font color="#4d4d93">&lt;portertech&gt;</font> <font color="#000000">portertech</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">obfuscurity</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">anyone else?</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">yer mom</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">funny =)</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">okay </font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">create a new org on github</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">everyone is in it</font><br>
+<font color="#854685">&lt;jdixon&gt;</font> <font color="#000000">yay</font><br>
+<font color="#42427e">&lt;ickymettle&gt;</font> <font color="#000000">cool</font><br>
+<font color="#42427e">&lt;ickymettle&gt;</font> <font color="#000000">add lozzd too</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000"><a href="https://github.com/monitoringsucks">https://github.com/monitoringsucks</a></font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">ickymettle, k</font><br>
+<font color="#42427e">&lt;ickymettle&gt;</font> <font color="#000000">he'll be really keen to comment</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">done</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">anyone else you guys can think of?</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">okay. closing the log. Thank you all seriously</font><br>
+<font color="#407a40">&lt;lusis&gt;</font> <font color="#000000">I know it was rather random</font><br>
+<font color="#42427e">&lt;ickymettle&gt;</font> <font color="#000000">anytime ... this was a great idea</font><br>
+
+</tt></body></html>
