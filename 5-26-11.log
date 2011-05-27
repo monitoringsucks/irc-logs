@@ -1,0 +1,986 @@
+**** BEGIN LOGGING AT Thu May 26 20:35:57 2011
+
+May 26 20:35:57 *	Now talking on ##monitoringsucks
+May 26 21:04:23 *	threescoops (~baz@hyperbola.interestingangle.com) has joined ##monitoringsucks
+May 26 21:06:13 *	vvuksan (~vuksan@c-24-63-41-19.hsd1.ma.comcast.net) has joined ##monitoringsucks
+May 26 21:07:25 *	whack (~jls@carrera.databits.net) has joined ##monitoringsucks
+May 26 21:07:39 *	ickymettle (~quassel@ec2-50-17-228-81.compute-1.amazonaws.com) has joined ##monitoringsucks
+May 26 21:07:50 <lusis>	sweet. real people
+May 26 21:07:54 <lusis>	I was just going to talk to myself
+May 26 21:07:57 <ickymettle>	!bots
+May 26 21:07:58 <vvuksan>	woohoo
+May 26 21:08:01 <ickymettle>	this is a great idea
+May 26 21:08:12 <vvuksan>	ickymettle: your eyes feel better?
+May 26 21:08:20 <ickymettle>	me == firsttime caller long time lurker
+May 26 21:08:34 <lusis>	ickymettle, how're you feeling?
+May 26 21:09:03 <ickymettle>	vvuksan: still very scratchy but yeah on the mend ... basically they chopped the muscles off the sides and reattached them further back, crazy stuff -- long time strabismus issues since birth
+May 26 21:09:13 <vvuksan>	:-(
+May 26 21:09:16 <lusis>	ouchie
+May 26 21:09:20 <ickymettle>	am in the process of relocating from Australia to New York so wanted to get the surgery done here before we leave
+May 26 21:09:53 <ickymettle>	good outcome though which is awesome ... but yeah best description of post op was throw sand in your eyes and spin around til dizzy .. that's how I felt for the past week :)
+May 26 21:10:06 <lusis>	holy shit
+May 26 21:10:09 <lusis>	that's wild
+May 26 21:10:35 <lusis>	glad everything appears to be going okay 
+May 26 21:10:54 <ickymettle>	gets even better .... on one eye they used adjustable sutures so post op in recovery when I came around they literally ran a bunch of tests then adjusted the muscle position WHILE I WAS AWAKE! 
+May 26 21:11:16 <vvuksan>	gee
+May 26 21:11:22 <ickymettle>	didn't feel any pain but it's a very surreal feeling having the specialist with tweezers puppeting the eye into palce
+May 26 21:11:41 <lusis>	should have used chef instead
+May 26 21:11:43 <lusis>	.....
+May 26 21:11:46 <lusis>	I kid
+May 26 21:11:48 <ickymettle>	;)
+May 26 21:12:07 <ickymettle>	yeah I was long time puppet user in a large infra before coming to etsy and migrating my brain to chef
+May 26 21:12:11 <lusis>	heh
+May 26 21:12:22 *	jdixon (~jdixon@c-68-55-0-29.hsd1.md.comcast.net) has joined ##monitoringsucks
+May 26 21:12:24 <vvuksan>	speaking of kids my son has exotropia which is a form of strabismus. He actually saw an opthomologist just today :-/
+May 26 21:12:24 <ickymettle>	but that's another ##systemautomationsucks discussion for another day :)
+May 26 21:12:29 <lusis>	but let's bitch about nagios for a while ;)
+May 26 21:12:31 <jdixon>	lol, the usual suspects
+May 26 21:12:35 <lusis>	and zenoss
+May 26 21:12:47 <lusis>	and opennms, zabbix
+May 26 21:12:57 <ickymettle>	shame lozzd isn't awake he'd be all over this
+May 26 21:13:07 <lusis>	I think he was the inspiration
+May 26 21:13:12 <ickymettle>	EMC smarts *ducks*
+May 26 21:13:23 <jdixon>	reconnoiter doesn't do fault detection/notification
+May 26 21:13:25 *	geekle_ (~quassel@202.146.7.239) has joined ##monitoringsucks
+May 26 21:13:31 <lusis>	woohoo
+May 26 21:13:32 <jdixon>	circonus is a pain to deploy
+May 26 21:13:34 <lusis>	a geekle_ 
+May 26 21:13:38 <geekle_>	:)
+May 26 21:13:39 <jdixon>	mon is useless
+May 26 21:13:48 *	joemiller (ixjxkcw3lx@24.255.14.172) has joined ##monitoringsucks
+May 26 21:13:49 <jdixon>	collectd's configuration blows
+May 26 21:13:53 <geekle_>	I'm still signed into my Quassel at home :/
+May 26 21:13:55 <ickymettle>	geekle: inherited my old infrastructure *sorry man*
+May 26 21:14:16 <lusis>	okay so let's do this. Out of the existing things out there
+May 26 21:14:23 <whack>	forget what sucks, everything sucks
+May 26 21:14:23 <lusis>	is there anything you guys actually LIKE about them?
+May 26 21:14:26 <whack>	what features do you like?
+May 26 21:14:27 <whack>	+1
+May 26 21:14:31 <joemiller>	graphing
+May 26 21:14:38 <joemiller>	hrm
+May 26 21:14:51 <vvuksan>	like about specific packages or ?
+May 26 21:14:58 <vvuksan>	be more specific
+May 26 21:14:59 <lusis>	vvuksan, good point
+May 26 21:15:01 <lusis>	so 
+May 26 21:15:10 <lusis>	there's two things really
+May 26 21:15:17 <lusis>	monitoring/alerting
+May 26 21:15:18 <joemiller>	i like deep-linking. and powerful linking, like with graphite.  makes dashboards easy to build
+May 26 21:15:19 <geekle_>	I like the relationship/dependencies for hosts/services on Nargee-arse (Nagios)
+May 26 21:15:19 <lusis>	and trending
+May 26 21:15:20 <vvuksan>	right
+May 26 21:15:26 <jdixon>	I like graphite because it's stupid simple to get a wide variety of data from a variety of agents into it.
+May 26 21:15:37 <jdixon>	but it has no useful dashboard.
+May 26 21:15:44 <joemiller>	i like passive checks a lot. i wish more monitoring suites had that.
+May 26 21:15:46 <jdixon>	and no fault detection / notifications.
+May 26 21:15:50 <whack>	jdixon: the new version does, iirc.
+May 26 21:16:00 <whack>	and you can use rocksteady for fault detection
+May 26 21:16:00 <jdixon>	whack: "no useful dashboard"
+May 26 21:16:07 <vvuksan>	whack: it has a dashboard but yeah
+May 26 21:16:12 <vvuksan>	not highly useful
+May 26 21:16:16 <whack>	really though, I think 'good' will require combinging multiple tools
+May 26 21:16:18 <ickymettle>	+1 for how ridiculously easy it is to get metrics into graphite
+May 26 21:16:20 <whack>	vs hoping there's one great tool 
+May 26 21:16:30 <whack>	like, I did a dashboard from graphite using google pages.
+May 26 21:16:35 <whack>	copy url, paste image, done.
+May 26 21:16:38 <jdixon>	there will be no one great *open source* tool in our lifetime
+May 26 21:16:42 <jdixon>	what you WILL see though...
+May 26 21:16:50 <lusis>	right so my perfect tool would take nagios' alerting flexibility and mix it with graphite's arbitrary data
+May 26 21:16:56 <jdixon>	is the ability to glue components together using the same data type/source.
+May 26 21:17:02 <jdixon>	like we're already seeing
+May 26 21:17:04 <lusis>	because nagios has the whole escalation, path
+May 26 21:17:14 <jdixon>	with collectd, ganglia, graphite, etc
+May 26 21:17:16 <whack>	lusis: I never use nagios's escalation stuff
+May 26 21:17:22 <whack>	I've always relied on external tools for that
+May 26 21:17:23 <lusis>	whack, interesting. I love it
+May 26 21:17:27 <joemiller>	whack, agree. i think the best tools will realize they are not going to be The One tool, and will make composing them into dashboards and such easier than their less good peers
+May 26 21:17:45 <jdixon>	inevitably volcane will finish his framework and you'll be able to plug in components
+May 26 21:17:47 <geekle_>	nagios escalation++
+May 26 21:17:54 <lusis>	of course I find I'm loving collectd more than munin
+May 26 21:17:57 <ickymettle>	for graphite dashboarding we basically have a dashboard class that wraps graph generation up
+May 26 21:18:00 <vvuksan>	thing to recognize is that it's not even about whether a single tool can satisfy all needs
+May 26 21:18:04 <ickymettle>	it's all templated
+May 26 21:18:06 <lusis>	vvuksan, yeah
+May 26 21:18:06 <joemiller>	i like pagerduty, because i can make it call me.  don't have to hire or outsource a NOC to call me if i ignore/sleep-thru an SMS
+May 26 21:18:10 <jdixon>	lusis: I like munin > collectd, but munin performance blows
+May 26 21:18:12 <vvuksan>	it's also about how people work
+May 26 21:18:18 <ickymettle>	so 10 lines of php we have dashboards of any metrics
+May 26 21:18:21 <jdixon>	I hope someone is recording this chat :)
+May 26 21:18:24 <lusis>	I am ;)
+May 26 21:18:25 <ickymettle>	I am
+May 26 21:18:28 <jdixon>	yay
+May 26 21:18:36 <vvuksan>	for example one of the reasons I got involved in rewriting the Ganglia UI is that I generally liked it
+May 26 21:18:39 <ickymettle>	pagerduty: needs a fkn API *NOW*
+May 26 21:18:40 <whack>	nod
+May 26 21:18:44 <whack>	pagerduty has an api
+May 26 21:18:45 <whack>	ish.l
+May 26 21:18:53 <whack>	their nagios integegration is pretty meh
+May 26 21:18:54 <vvuksan>	but implemented tons of things by hand in various jobs
+May 26 21:18:58 <portertech>	an api to pull out events
+May 26 21:19:03 <whack>	portertech: +1
+May 26 21:19:06 <vvuksan>	I figured I'd put in an official feature
+May 26 21:19:08 <portertech>	hello
+May 26 21:19:09 <whack>	I asked for that months ago
+May 26 21:19:11 <portertech>	im in
+May 26 21:19:13 <lusis>	portertech lives!
+May 26 21:19:14 <geekle_>	My two wishes from a new monitoring suite... 1) API 2) decentralised
+May 26 21:19:15 <jdixon>	DevMon is the next frontier
+May 26 21:19:21 <ickymettle>	whack: there is an API for config?
+May 26 21:19:27 <whack>	ickymettle: mmm probably not
+May 26 21:19:29 <jdixon>	pluggable components with an API
+May 26 21:19:31 <vvuksan>	that said the interface makes sense to me but may not make sense to other people
+May 26 21:19:37 <whack>	I don't really remember, I've dropped those brain cells ;)
+May 26 21:19:39 <lusis>	okay so it looks like we all agree a sane api is key ;)
+May 26 21:19:41 <joemiller>	i like the simpleness of flapjack, but i need a view that i can see red/green.  what's still alerting, what's not alerting
+May 26 21:19:44 <lusis>	in whatever components
+May 26 21:19:52 <ickymettle>	we need to automate on-call rotation in pagerduty, and also query the current config
+May 26 21:19:58 *	kallistec (~kallistec@184-106-81-48.static.cloud-ips.com) has joined ##monitoringsucks
+May 26 21:20:03 <lusis>	kallistec too?
+May 26 21:20:04 <ickymettle>	they've been promising API for us since the end of last year
+May 26 21:20:04 <lusis>	damn
+May 26 21:20:08 <lusis>	shit just got real
+May 26 21:20:10 <whack>	ickymettle: +1
+May 26 21:20:13 <kallistec>	lol
+May 26 21:20:16 <whack>	ickymettle: that's the response I got, too
+May 26 21:20:25 <lusis>	kallistec, everyone is going free form right now
+May 26 21:20:25 <whack>	because I wanted a way to query active alerts, etc
+May 26 21:20:29 <lusis>	I'm just logging
+May 26 21:20:32 <lusis>	for ideas ;)
+May 26 21:20:38 <kallistec>	heh
+May 26 21:20:54 <lusis>	I think we're on the "pagerduty needs this" portion of the program
+May 26 21:20:57 <lusis>	;)
+May 26 21:20:59 <joemiller>	heh
+May 26 21:21:11 <lusis>	okay so here's a question
+May 26 21:21:14 <joemiller>	PD is just escalations. maybe move on to next sub-topic of the monitoring universe
+May 26 21:21:20 <vvuksan>	lusis: i would suggest you first pick a trending system you like
+May 26 21:21:20 <lusis>	starting at the collection level
+May 26 21:21:22 <kallistec>	I dunno, pagerduty seems fine for what it is
+May 26 21:21:24 <jdixon>	collection is easy now
+May 26 21:21:27 <lusis>	right
+May 26 21:21:33 <whack>	collection still sucks
+May 26 21:21:34 <lusis>	so is everyone fairly happy with existing stuff?
+May 26 21:21:36 <vvuksan>	lusis: then you can write something that interfaces Nagios to it
+May 26 21:21:37 <jdixon>	deployment is still meh, but volcane is probably getting closer
+May 26 21:21:37 <lusis>	whack, orly?
+May 26 21:21:38 <ickymettle>	collection is still painful
+May 26 21:21:39 <joemiller>	define collection
+May 26 21:21:42 <whack>	nagios drops most output from checks
+May 26 21:21:46 <lusis>	collectd, munin, snmp
+May 26 21:21:58 <whack>	boolean "fail, healthy" is nice, but cutting the output sucks ass.
+May 26 21:21:58 <ickymettle>	having built a centralised nagios monitoring 3x datacentres it is so horrible
+May 26 21:22:00 <lusis>	metrics gathering
+May 26 21:22:03 <geekle_>	whack: you can change that.
+May 26 21:22:05 <jdixon>	statsd++, logster++
+May 26 21:22:19 <kallistec>	munin is too tightly coupled to the output format
+May 26 21:22:20 <lusis>	ickymettle, amen
+May 26 21:22:26 <lusis>	kallistec, yeah
+May 26 21:22:30 <vvuksan>	whack: but in most cases if you are using a trending system you really don't need to many nagios checks
+May 26 21:22:37 <vvuksan>	whack: make that native checks
+May 26 21:22:40 <whack>	kallistec: plus writing plugins for munin is considerably more awkward than for graphitem, collectd, and ganglia
+May 26 21:22:41 <lusis>	one thing I like about collectd is the write plugins
+May 26 21:22:49 <vvuksan>	whack: you should just query the trending system
+May 26 21:22:50 <whack>	vvuksan: a what?
+May 26 21:22:56 <lusis>	especially write_http
+May 26 21:22:59 <kallistec>	having a centralized polling daemon can't possibly scale
+May 26 21:23:05 <whack>	vvuksan: in my world there are two kinds of checks - metrics and tests.
+May 26 21:23:06 <portertech>	I don't care about an admin UI, would like an RESTful API and a simple config file format (perhaps yml or raw json even) that I can happily handle w/ CM, need it to talk nagios (migration simplicity), need to be able to distribute
+May 26 21:23:11 <lusis>	kallistec, I agree I used to think it would
+May 26 21:23:19 <whack>	tests are just like unit tests done at build-time
+May 26 21:23:20 <lusis>	but as portertech says
+May 26 21:23:21 <lusis>	with CM
+May 26 21:23:23 <whack>	they have useful output, stack traces, etc
+May 26 21:23:26 <lusis>	it's pointless to need that now
+May 26 21:23:30 <ickymettle>	kallistec: we had nagios instances running in each DC but feeding passive check results back to a central aggregator
+May 26 21:23:30 <joemiller>	i think there are a lot of decent tools for metrics, i actually find lacking in the 'tests' category
+May 26 21:23:33 <whack>	metrics like "How many qps are we doing?" just get numbers.
+May 26 21:23:41 <vvuksan>	yep
+May 26 21:23:48 <whack>	like having a complex selenium web test simply output "OK"
+May 26 21:23:50 <whack>	is not useful.
+May 26 21:23:58 <whack>	what failed? when? what was the error message?
+May 26 21:24:05 <whack>	"CRITICAL" is not useful for debugging that.
+May 26 21:24:07 <vvuksan>	but why would you want Nagios to record it ?
+May 26 21:24:09 <lusis>	I think the problem I have is that all the existing "packages" expect to be the system of record
+May 26 21:24:16 <vvuksan>	wouldn't you record it elsewhere ?
+May 26 21:24:19 <lusis>	and that doesn't fit my world view
+May 26 21:24:29 <whack>	vvuksan: because nagios already has that feature and that's the monitoring system I use currently.
+May 26 21:24:39 <vvuksan>	fair enough
+May 26 21:24:45 <whack>	y'all ever use hudson/jenkins, and it's unit-test parsing stuff?
+May 26 21:24:53 <joemiller>	would like to be able to get some re-use out of QA tests
+May 26 21:24:55 <lusis>	whack, working on it a bit now
+May 26 21:24:57 <whack>	have a JUnit test fail, and it shows you where in the suite it failed, the stack trace, and output, etc, all quite nicely
+May 26 21:25:00 <lusis>	joemiller, good point
+May 26 21:25:27 <kallistec>	yeah, I dunno how practical that is
+May 26 21:25:28 <lusis>	joemiller, that has the benefit of getting useful monitors in the system up front
+May 26 21:25:44 <kallistec>	i.e., our tests expect to be able to nuke the database
+May 26 21:25:51 <joemiller>	heh
+May 26 21:25:52 <lusis>	kallistec, chaos monkey monitoring
+May 26 21:25:52 <lusis>	;)
+May 26 21:25:56 <kallistec>	not gonna run it in prod
+May 26 21:26:05 <joemiller>	good point
+May 26 21:26:11 <kallistec>	I mean, I'm confident I can restore from backups
+May 26 21:26:25 <joemiller>	but you don't need to restore from backups every 5 minutes? 
+May 26 21:26:29 <kallistec>	and I'm also confident it would piss ppl off if I did it every day
+May 26 21:26:32 <lusis>	kallistec, don't you have a subset though that are performance related that don't expect to purge?
+May 26 21:26:52 <lusis>	or could easily be adapted with minimal effort?
+May 26 21:26:52 <joemiller>	continuous benchmarking/loadtesting.
+May 26 21:26:57 <kallistec>	no, it's built in to the test framework
+May 26 21:27:05 <kallistec>	we did adapt some
+May 26 21:27:05 <lusis>	kallistec, ahh okay
+May 26 21:27:24 <kallistec>	and it took sooo long that it's really not gonna happen on a regular basis
+May 26 21:27:29 <lusis>	k
+May 26 21:28:01 <lusis>	so it's clear that no single tool fits the bill anymore?
+May 26 21:28:04 <kallistec>	there were some talks at railsconf last year about running cukes agains prod
+May 26 21:28:05 <lusis>	just not realistic
+May 26 21:28:06 <joemiller>	i wish a monitoring system would configure itself for me. guess my intent
+May 26 21:28:17 <kallistec>	and I was like, "tried it, didn't like it"
+May 26 21:28:22 <lusis>	heh
+May 26 21:28:29 <vvuksan>	lusis: correct. There is no one tool
+May 26 21:28:42 <ickymettle>	one feature i'd love to see is some sort of adaptive thresholding
+May 26 21:28:43 <lusis>	vvuksan, okay cool. Got that out of the way
+May 26 21:28:48 <kallistec>	anyway, I've been hacking on and off on some stuff for configuration monitoring
+May 26 21:28:54 <joemiller>	so you got multiple tools, you start to get complexity in configuring them all and keeping them in sync
+May 26 21:28:57 <joemiller>	perhaps noah helps with that
+May 26 21:28:58 <kallistec>	er, integration monitoring
+May 26 21:29:01 <ickymettle>	some means of kinda having somethign in "listen" mode for a say week
+May 26 21:29:07 <kallistec>	only a client tho
+May 26 21:29:13 <lusis>	kallistec, you have a repo public right?
+May 26 21:29:17 <ickymettle>	it determines what the metric "normal" looks like
+May 26 21:29:17 <kallistec>	yeah
+May 26 21:29:17 <lusis>	I think you linked it?
+May 26 21:29:31 <lusis>	ickymettle, oh I like that
+May 26 21:29:34 <ickymettle>	then can alert of anomaly
+May 26 21:29:36 <kallistec>	https://github.com/danielsdeleo/critical
+May 26 21:29:44 <lusis>	isn't that the rocksteady approach though?
+May 26 21:29:55 <lusis>	learning system?
+May 26 21:29:55 <ickymettle>	I think that was their vibe
+May 26 21:30:03 <vvuksan>	you could do holt-winters stuff but that's iffy
+May 26 21:30:10 <ickymettle>	I know hyperic was touting that as well
+May 26 21:30:15 <lusis>	hyperic
+May 26 21:30:20 <kallistec>	I had to "pivot" to making it a metric collector for a bit just to run it in a useful context for a whil
+May 26 21:30:20 <vvuksan>	you can turn it on in RRDs
+May 26 21:30:21 *	lusis throws up a little in his mouth
+May 26 21:30:29 <ickymettle>	vvuksan: funny you should mention, we're looking at implementing holt-winters in graphite at the moment
+May 26 21:30:39 <lusis>	kallistec, got it bookmarked now ;)
+May 26 21:30:42 <vvuksan>	i have an implementation that adds it in Ganglia
+May 26 21:30:50 <ickymettle>	oh nice
+May 26 21:30:52 <lusis>	kallistec, I'm going to be doing up some notes
+May 26 21:30:54 <portertech>	has anyone used flapjack in any sort of env? w/ its current state?
+May 26 21:30:55 <vvuksan>	but it needs work
+May 26 21:31:08 <lusis>	lindsay said flapjack was kind of stalled right now
+May 26 21:31:10 <lusis>	I think
+May 26 21:31:13 <kallistec>	lusis: anyway, the long term plan is to flesh out story monitoring etc
+May 26 21:31:25 <portertech>	lusis: I'd like to pick it up
+May 26 21:31:25 <vvuksan>	yeah I haven't seen any activity on flapjack for quite a while
+May 26 21:31:29 <jdixon>	ickymettle: scoutapp does some sort of that
+May 26 21:31:30 <portertech>	I did the arch
+May 26 21:31:30 <kallistec>	maybe make a passive check bridge to nagios
+May 26 21:31:38 <portertech>	I hate NSCA
+May 26 21:31:42 <ickymettle>	basically when we put historical averages into graphite that showed us the value of looking at current vs historical in trending data
+May 26 21:31:47 <kallistec>	so I can iterate on something
+May 26 21:31:50 <lusis>	portertech, +1000 on ncsa
+May 26 21:31:59 <lusis>	I like check_mk in Nagios land
+May 26 21:32:06 <lusis>	but it's not CM-configurable friendly
+May 26 21:32:14 <vvuksan>	am I the only one that doesn't use NCSA :-)
+May 26 21:32:24 <lusis>	portertech, oh wait
+May 26 21:32:27 <lusis>	I was thinking nrpe ;)
+May 26 21:32:38 <vvuksan>	or nrpe whatever
+May 26 21:32:40 <vvuksan>	:-)
+May 26 21:32:43 <lusis>	but check_mk doesn't use ncsa either
+May 26 21:33:05 <portertech>	We've several stacks, each w/ their own headless nagios, having to batch nsca to central
+May 26 21:33:05 <joemiller>	any thoughts on the saas/hosted monitoring options?  new relic, cloudkick, etc
+May 26 21:33:07 <lusis>	kallistec, why nagios? Just because it's the gorilla in the room?
+May 26 21:33:12 <ickymettle>	I just had flashbacks to NSCA telnet over serial 
+May 26 21:33:16 <portertech>	the result is unpleasant
+May 26 21:33:24 <kallistec>	lusis: just cuz we use it right now
+May 26 21:33:30 <lusis>	kallistec, ahh okay
+May 26 21:33:33 <ickymettle>	new relic is frighteningly good
+May 26 21:33:39 <ickymettle>	however
+May 26 21:33:40 <joemiller>	pricey
+May 26 21:33:42 <lusis>	yep
+May 26 21:33:44 <kallistec>	so I can run it in preprod at least
+May 26 21:33:45 <lusis>	$$$$$
+May 26 21:33:45 <ickymettle>	1) expensve
+May 26 21:33:48 *	mconigliaro (~anonymous@206.205.72.162) has joined ##monitoringsucks
+May 26 21:33:53 <portertech>	joemiller: saas/hosted works for me when the env is small, but they aren't as flexible or extensible as i'd like
+May 26 21:33:55 <ickymettle>	2) not very extensible (you can but it's not pretty)
+May 26 21:34:04 <ickymettle>	the reporting is awesome
+May 26 21:34:08 <ickymettle>	it's hopeless for alerting
+May 26 21:34:13 <portertech>	ickymettle: agreed, its gets damn expensive 
+May 26 21:34:21 >mconigliaro<	just jump right in. People are brainstorming random shit. I'm just logging and taking notes
+May 26 21:34:45 <ickymettle>	they've thankfully done a lot of work on their backend collectors so it's more stable now
+May 26 21:34:47 <lusis>	does anyone find nagios' flapping useful?
+May 26 21:34:53 <lusis>	I happen to like it
+May 26 21:35:01 <kallistec>	half the time it fucks us
+May 26 21:35:04 <ickymettle>	but could regurlarly bring out collectors down
+May 26 21:35:09 <ickymettle>	at that point you're blind
+May 26 21:35:17 <jdixon>	lusis: flapping is terrible
+May 26 21:35:19 <ickymettle>	also very hard ot pull the data out for other purposes
+May 26 21:35:20 <lusis>	really?
+May 26 21:35:21 <lusis>	hrmm
+May 26 21:35:36 <kallistec>	the flap detection will kick in, the service will recover, but it won't cancel the alarm in pgrduty
+May 26 21:35:36 <whack>	lusis: flapping detection should alert, not silence
+May 26 21:35:37 <jdixon>	oh let's see "my service is in a crappy state, please don't tell me about it"
+May 26 21:35:45 <jdixon>	that makes no fucking sense
+May 26 21:35:46 <whack>	at google any "flapping" services triggered alerts
+May 26 21:35:50 <whack>	+1
+May 26 21:35:59 <portertech>	+1
+May 26 21:36:03 <lusis>	heh
+May 26 21:36:05 <whack>	flapping is megabad
+May 26 21:36:05 <jdixon>	it enables laziness
+May 26 21:36:11 <ickymettle>	I can totally see the value in flap detection but it needs to be easier to configure
+May 26 21:36:16 <lusis>	ickymettle, whew
+May 26 21:36:19 <lusis>	thought I was alone
+May 26 21:36:28 <jdixon>	the "value" in flapping is in being empowered to ignore alerts
+May 26 21:36:32 <lusis>	I totally get what everyone is saying
+May 26 21:36:32 <whack>	yeah
+May 26 21:36:34 <lusis>	but 
+May 26 21:36:36 <jdixon>	if you see that as value I don't want you watching my stuff ;)
+May 26 21:36:42 <whack>	flapping should trigger "this is flapping" alerts
+May 26 21:36:44 <joemiller>	haha
+May 26 21:36:44 <ickymettle>	in most instances I just disable it because badly configured flap detection is way worse than no flap detection
+May 26 21:36:54 <whack>	if you want to silence it, there should be a "I know this is flapping, hush for a while" action
+May 26 21:37:05 <lusis>	whack, gotcha
+May 26 21:37:13 <jdixon>	if the flapping is caused by latency issues, use decentralized nagios checks
+May 26 21:37:18 <kallistec>	yeah, the value is in stfu-ing so you don't get a barrage
+May 26 21:37:20 <jdixon>	er, distributed
+May 26 21:37:20 <whack>	which you can do in nagios (schedule downtime, or whatnot)
+May 26 21:37:32 <lusis>	whack, via command file =/
+May 26 21:37:34 <whack>	kallistec: nod, and STFU should be a human action
+May 26 21:37:38 <whack>	lusis: so? :(
+May 26 21:37:41 <lusis>	heh
+May 26 21:37:43 <whack>	I do it via the web interface
+May 26 21:37:48 <whack>	I mean, it sucks, granted
+May 26 21:37:51 <lusis>	I think I'd be happier with Nagios if it had a real api
+May 26 21:37:55 <whack>	"silence this for 2 hours" should be a simple action
+May 26 21:38:00 <lusis>	whack, agreed
+May 26 21:38:03 <portertech>	talk to nagios from emacs :P
+May 26 21:38:05 <vvuksan>	i have a script that does that
+May 26 21:38:06 <joemiller>	isn't incinga trying to make a nagios api?
+May 26 21:38:14 <joemiller>	icinga, whatever it is
+May 26 21:38:20 <vvuksan>	specify a regex and it silences everything in sight
+May 26 21:38:22 <lusis>	joemiller, I point you to history
+May 26 21:38:26 <lusis>	joemiller, groundwork
+May 26 21:38:28 <lusis>	=/
+May 26 21:38:42 <whack>	joemiller: nod
+May 26 21:38:45 <geekle_>	All downtiming and undowntiming a group of hosts/services should be easier.
+May 26 21:38:48 <geekle_>	Nagios blows for that.
+May 26 21:38:50 <whack>	ultimately, though, I think nagios has a crappy foundation
+May 26 21:38:50 <kallistec>	whack: yeah, the display of alert history needs to be more intelligent also
+May 26 21:38:59 <lusis>	geekle_, if you group properly it's not so bad
+May 26 21:38:59 <whack>	everything is a host, services are not services, they're "checks" or "tests"
+May 26 21:39:02 <lusis>	geekle_, and add deps
+May 26 21:39:06 <lusis>	but yeah
+May 26 21:39:17 <geekle_>	Yeah :) Provided they are grouped and have deps :P
+May 26 21:39:19 <whack>	host obsession is really lame
+May 26 21:39:23 <ickymettle>	I would love an API for nagios so bad - ack alerts, submit comments, schedule downtime, disable notifications etc ...
+May 26 21:39:31 <whack>	especially since most of my tests are "frontend needs to talk to backend" which is really two hosts
+May 26 21:39:37 <lusis>	whack, I think the thing that always brings me back to nagios
+May 26 21:39:42 <lusis>	is that plugins are so f'ing easy
+May 26 21:39:48 <lusis>	I'm not locked into anything 
+May 26 21:39:50 <whack>	lusis: flapjack supports nagios plugins, iirc
+May 26 21:39:54 <joemiller>	so maybe the problem with most is the model they start from.  building a monitoring system today, what would be the best way to build the model
+May 26 21:39:56 <lusis>	whack, hmmm
+May 26 21:40:00 <whack>	I like NRPE, slightly.
+May 26 21:40:04 <lusis>	heh
+May 26 21:40:05 <jdixon>	ickymettle: nagios is still the least crappy of all crappy fault detection systems
+May 26 21:40:05 <whack>	NCSA is stupid, but useful
+May 26 21:40:08 <jdixon>	that doesn't make it good
+May 26 21:40:11 <whack>	nod
+May 26 21:40:19 <ickymettle>	jdixon: I absolutely agree
+May 26 21:40:21 <whack>	I think if folks wrote prod tests more like unit tests it'd be easier
+May 26 21:40:26 <joemiller>	i think flapjack would be almost perfect if it had some kind of dashboard tha showed me what was up/down.  i don't think it does that, no?  just kicks off alerts when state changes
+May 26 21:40:29 <jdixon>	and yet, 10(?) years later, it's the "best" we have
+May 26 21:40:31 <ickymettle>	one thing that is patently clear is despite nagios' faults it actually works
+May 26 21:40:40 <whack>	ickymettle: yeah
+May 26 21:40:46 <lusis>	brb
+May 26 21:40:47 <jdixon>	it _mostly_ works
+May 26 21:40:48 <whack>	I think most other monitoring efforts are just failtown 
+May 26 21:40:57 <whack>	they don't take what works in existing systems and innovate elsewhere
+May 26 21:41:02 <portertech>	I'm going to give flapjack a go, perhaps pick it up back on its feet and get it rolling, continue to use previously create nagios checks w/ cuke/webrat etc
+May 26 21:41:13 <ickymettle>	actually I should reword that ... no one has managed to build a system that delivers the same flexibility and function 
+May 26 21:41:33 <jdixon>	in an ideal world you'd trend metrics and pick a threshold on a graph
+May 26 21:41:46 <jdixon>	anything that exceeds (or invert) that threshold would fire off an event
+May 26 21:41:54 <jdixon>	there's your monitoring system.
+May 26 21:42:01 <joemiller>	it's interesting to see the explosion in new tools for managing infrastructure as code, but monitoring/fault detection is still using the equivalent of a 10000 line bash script
+May 26 21:42:01 <portertech>	in an ideal world, that threshold can be determined for you :)
+May 26 21:42:06 <whack>	jdixon: not all alerts are trend-based
+May 26 21:42:06 <vvuksan>	jdixon: picking a threshold is easy
+May 26 21:42:08 <joemiller>	from 10 yrs ago
+May 26 21:42:11 <ickymettle>	jdixon: that's what I was heading towards with a system that can "learn" what normal is and alert on anomaly
+May 26 21:42:11 <joemiller>	15 yrs ago
+May 26 21:42:14 <vvuksan>	the engine behind it is hard
+May 26 21:42:17 <jdixon>	reconnoiter is actually pretty close, but none of the fault detection stuff is built in
+May 26 21:42:27 <whack>	jdixon: and nobody uses reconnoiter because it requires postgres ;)
+May 26 21:42:31 <jdixon>	whack: I didn't say that alerts are trend-based
+May 26 21:42:33 <ickymettle>	hahaha
+May 26 21:42:48 <whack>	18:40 < jdixon> in an ideal world you'd trend metrics and pick a threshold on a graph
+May 26 21:42:49 <jdixon>	they're metric based
+May 26 21:42:54 <whack>	^ what I was responding to
+May 26 21:42:59 <jdixon>	yes, I know
+May 26 21:43:11 <mconigliaro>	ok, i sorta know what i want, but i cant quite wrap my head around how to implement it. i want something like chef, in the sense that i want to be able to describe monitoring for my environment in pure code.
+May 26 21:43:15 <whack>	and what I'm saying is that for boolean metrics, you need more details for debugging
+May 26 21:43:16 <jdixon>	whack: yeah, reconnoiter is an engineering marvel of complexity
+May 26 21:43:25 <whack>	"frontend tests fail" is boolean
+May 26 21:43:29 <joemiller>	mcong: agreed
+May 26 21:43:30 <whack>	where did it fail?
+May 26 21:43:33 <mconigliaro>	im curious if anyone else feels the same way i do
+May 26 21:43:38 <joemiller>	yes
+May 26 21:43:42 <ickymettle>	yeah you could almost build out a taxonomy of monitoring types
+May 26 21:43:43 <kallistec>	mconigliaro: yeah, if you missed it
+May 26 21:43:48 <kallistec>	https://github.com/danielsdeleo/critical
+May 26 21:43:53 <kallistec>	scroll to the example
+May 26 21:43:54 <jdixon>	whack: well, yeah.. a "last known" state engine for booleans
+May 26 21:43:58 <lusis>	back
+May 26 21:44:00 <vvuksan>	sure I'd like to build something better but that's a lot of work
+May 26 21:44:10 <ickymettle>	you've got boolean (broke, not broke), trending - (within thresh/out of thresh) etc ...
+May 26 21:44:19 <lusis>	vvuksan, I was thinking that maybe we can spawn some ideas and attack it more modular
+May 26 21:44:21 <vvuksan>	thus many have failed
+May 26 21:44:32 <mconigliaro>	kallistec: yes, something like that
+May 26 21:44:33 <whack>	ickymettle: and most of my checks have details in the output that areuseful for debugging
+May 26 21:44:42 <ickymettle>	oh absolutely
+May 26 21:44:43 <jdixon>	vvuksan: that's why we(?) need to focus on components with standard interfaces
+May 26 21:44:43 <vvuksan>	lusis: sure but someone has to have the high level vision
+May 26 21:44:45 <joemiller>	can't you view boolean as a treshhold?  something is mostly OK, then it changes to BAD. that is outside the OK threshold =)
+May 26 21:44:51 <lusis>	vvuksan, like "hey I've got this really cool alerting engine based on a rule set"
+May 26 21:44:57 <jdixon>	there's been a *lot* of work to that effect lately
+May 26 21:44:57 <lusis>	vvuksan, but I hear ya
+May 26 21:45:01 <ickymettle>	an "event" should kinda have a state and some easily parsable debugging output
+May 26 21:45:02 <whack>	joemiller: right, what I'm saying is there's other data attached to each check that is not just a metric
+May 26 21:45:04 <ickymettle>	and performance output
+May 26 21:45:10 <ickymettle>	nagios got it kinda close with the perfdata
+May 26 21:45:11 <vvuksan>	lusis: I just don't think you can attack it piecemeal
+May 26 21:45:17 <lusis>	vvuksan, hrmmm
+May 26 21:45:17 <joemiller>	whack, aye, i understand, and agree
+May 26 21:45:20 <portertech>	who has btried mcollective for active checks?
+May 26 21:45:25 <joemiller>	Volcane has =)
+May 26 21:45:27 <vvuksan>	you have to have a high level vision 
+May 26 21:45:28 <ickymettle>	it's just imeplemented completely differently for nearly every check (unless they've followed the actual perfdata spec)
+May 26 21:45:41 <vvuksan>	you can certainly decide which features to attack first
+May 26 21:45:44 <vvuksan>	which is only prudent
+May 26 21:45:45 <whack>	ickymettle: meh, I think perfdata is a special case of something that's not a special case
+May 26 21:45:50 <lusis>	I'll be honest I like mcollective but it's too many moving parts for me right now
+May 26 21:45:58 <whack>	check "fail" is a metric, just like "how long this took" even if it's the same script
+May 26 21:45:59 <lusis>	no offense to ANY work that Volcane has done
+May 26 21:46:03 <vvuksan>	but still doing piece by piece may be counterproductive. Dunno
+May 26 21:46:16 <lusis>	vvuksan, gotcha
+May 26 21:46:19 <jdixon>	I disagree
+May 26 21:46:26 <portertech>	lusis: agreed, unless that part of your infra is already in place for other uses
+May 26 21:46:26 <jdixon>	it avoids lock-in
+May 26 21:46:33 <portertech>	if you are a heavy puppet user etc
+May 26 21:46:39 <ickymettle>	I kinda liked the concept of splitting the event colelction/correlation/alerting and the actual scheduling/execution of the checks
+May 26 21:46:39 <lusis>	portertech, I don't even run my own chef server
+May 26 21:46:45 <jdixon>	increases competition 
+May 26 21:46:49 <whack>	ickymettle: +1
+May 26 21:46:57 <lusis>	but I want to able to drive WHATEVER from chef/puppet
+May 26 21:47:00 <portertech>	lusis: me neither, well, an old 0.7.x is kicking around on gentoo :P
+May 26 21:47:03 <jdixon>	ickymettle: oh hey, great idea. wish I'd said that. ;)
+May 26 21:47:04 <whack>	schedule checks, ship results somewhere, have somethign else react to the data
+May 26 21:47:08 <ickymettle>	those big enterprise guys were all over it
+May 26 21:47:15 <ickymettle>	I was really excited for rivermuse
+May 26 21:47:20 <joemiller>	whack, aye, that's what i liked about flapjack
+May 26 21:47:26 <ickymettle>	which basically was an event collection/correlation engine
+May 26 21:47:32 <kallistec>	whack: yeah that's the approach I'm taking
+May 26 21:47:34 <portertech>	lusis: you have a bot or a transcript of all of this right?
+May 26 21:47:35 <ickymettle>	cos what i'd like in an "alerting system"
+May 26 21:47:43 <lusis>	portertech, lemme make sure but yeah
+May 26 21:47:44 <ickymettle>	is something that can take inputs from all over the place
+May 26 21:47:47 <lusis>	my client is logging
+May 26 21:47:51 <portertech>	me too
+May 26 21:48:06 <kallistec>	whack: but what about rescheduling checks on shorter interval after failure?
+May 26 21:48:08 <ickymettle>	for instance: a chef handler that fires an event into this "collector" when a resouce fails or an exception is thrown
+May 26 21:48:13 <vvuksan>	what I think people are missing out is that basic stuff like result checking then sending alert is an easy piece of the puzzle
+May 26 21:48:15 <lusis>	we're good
+May 26 21:48:19 <whack>	kallistec: depends on how you implement it
+May 26 21:48:27 <lusis>	vvuksan, so what's the most complex part then?
+May 26 21:48:29 <vvuksan>	problem because all the other "unsexy" pieces of the puzzle
+May 26 21:48:31 <lusis>	maybe I missed it
+May 26 21:48:31 <ickymettle>	you have someother scheduler that is running active tests + trending stuff etc ... feeds back again into a central collector
+May 26 21:48:39 <ickymettle>	throwing my crazy guy haton
+May 26 21:48:44 <ickymettle>	with all this event data in one place
+May 26 21:48:45 <vvuksan>	like notification intervals, service dependencies etc. etc.
+May 26 21:48:49 <whack>	I mean, you could just dto scheduling with a shell script and at(8)
+May 26 21:48:51 <vvuksan>	these are not hard
+May 26 21:48:54 <ickymettle>	you could start doing really interesting correlations on the "why"
+May 26 21:48:54 <kallistec>	whack: wdym? what should it look like IYO?
+May 26 21:48:56 <vvuksan>	just not very sexy to implement
+May 26 21:48:59 <joemiller>	i think it's the configuration that is not sexy
+May 26 21:49:05 <lusis>	vvuksan, I'd be happy to do that stuff myself
+May 26 21:49:08 <joemiller>	keeping configuration aligned with reality
+May 26 21:49:23 <ickymettle>	oh our apaches just dropped req/sec - oh look chef pushed an APC change to those boxes 10 secs agao then it all blew up
+May 26 21:49:43 <joemiller>	it's like dev guys who would rather write code than write tests.
+May 26 21:50:15 <geekle_>	My crazy guy hat involves nodes writting data to a message bus and "super nodes" pick the data up.
+May 26 21:50:22 <kallistec>	vvuksan: yeah, the deps between services are hard to implement
+May 26 21:50:32 <lusis>	geekle_, you just invented skype ;)
+May 26 21:50:34 <geekle_>	Each super node has a role (or multiple roles)... alerting, dash, charting, trending etc.
+May 26 21:50:39 <vvuksan>	also just the sheer amount of testing required to write something from scratch
+May 26 21:50:45 <geekle_>	lusis: OMFG BBQ :P
+May 26 21:50:50 <vvuksan>	address all the edge cases is not for the faint of heart
+May 26 21:50:55 <lusis>	kallistec, vvuksan don't our CM tools already cover that?
+May 26 21:50:59 <lusis>	to some degree?
+May 26 21:51:09 <ickymettle>	FYI: rivermuse I mentioned earlier .... it's "kinda" OSS built by ex-enterprise dudes but it is interesting http://www.rivermuse.com/products/overview/
+May 26 21:51:24 <ickymettle>	heavy on the ITIL speak
+May 26 21:51:26 <vvuksan>	lusis: perhaps
+May 26 21:51:35 <vvuksan>	lusis: but you'd have to figure out/test it
+May 26 21:51:46 <lusis>	vvuksan, yeah
+May 26 21:51:49 <lusis>	geekle_, heh
+May 26 21:52:08 <vvuksan>	IMO this is why many projects have failed
+May 26 21:52:26 <kallistec>	lusis: yeah, even if you have the info, it's something that the more centralized alert dispatcher dude has to know
+May 26 21:52:29 <ickymettle>	one thing nagios has is 10-15 years of trust
+May 26 21:52:38 <vvuksan>	ickymettle: ++
+May 26 21:52:41 <jdixon>	ickymettle: it's not trust
+May 26 21:52:41 <lusis>	ickymettle, yep
+May 26 21:52:45 <jdixon>	it's lack of competition
+May 26 21:52:51 <lusis>	jdixon, nah
+May 26 21:52:53 <geekle_>	ickymettle: aye.
+May 26 21:52:55 <ickymettle>	well sorry not trust per-se but battlefield experience
+May 26 21:52:57 <jdixon>	"acceptance"
+May 26 21:53:05 <lusis>	jdixon, acceptance is better ;)
+May 26 21:53:10 <ickymettle>	you can be pretty confident if configured right it will largely work
+May 26 21:53:15 <kallistec>	jdixon: there's a bit of a leap of faith to say this thing will wake me up when shit goes wrong
+May 26 21:53:17 <vvuksan>	cause again what if your alerter fails :-)
+May 26 21:53:21 <kallistec>	instead of crashing
+May 26 21:53:28 <ickymettle>	and we've "accepted" the limitations/issues/weaknesses 
+May 26 21:53:34 <jdixon>	watching the watchers and all that
+May 26 21:53:36 <lusis>	vvuksan, that's a bit too meta for my tastes right now
+May 26 21:53:40 <lusis>	watching the..
+May 26 21:53:41 <lusis>	what he said
+May 26 21:53:42 <joemiller>	CVS has battlefield experience but no one uses it anymore
+May 26 21:53:47 <jdixon>	:)
+May 26 21:53:57 <ickymettle>	joemiller: but there are viable working alternatives
+May 26 21:54:05 <joemiller>	competition? =)
+May 26 21:54:17 <lusis>	okay so quick round the room kind of thing
+May 26 21:54:19 <joemiller>	viable being the key word, i suppose
+May 26 21:54:22 <ickymettle>	well look at the mess DVCS competition is now
+May 26 21:54:27 <jdixon>	time to organize a RFC for a modern commodotized monitoring standards?
+May 26 21:54:28 <lusis>	two things you like about nagios
+May 26 21:54:29 <ickymettle>	git kinda rising to the top
+May 26 21:54:32 <vvuksan>	also look at Icinga
+May 26 21:54:37 <vvuksan>	they started off somewhat strong
+May 26 21:54:42 <ickymettle>	but man do I hate it when I run into something in bazzar or mercurial
+May 26 21:54:44 <vvuksan>	but things have kinda stalled
+May 26 21:54:52 <lusis>	vvuksan, they had a tainted start
+May 26 21:54:57 <vvuksan>	it's an improvement
+May 26 21:55:01 <joemiller>	nagios:  1) ease/speed of writing monitors
+May 26 21:55:02 <jdixon>	you have new projects coming out every day doing the same sort of stuff as ganglia/graphite
+May 26 21:55:06 <jdixon>	reinventing their own storage format
+May 26 21:55:08 <jdixon>	stupid
+May 26 21:55:11 <ickymettle>	what was that other french packaging of nagios
+May 26 21:55:11 <vvuksan>	yep
+May 26 21:55:14 <geekle_>	lusis: 1) Service/Host Relationships/Deps 2) Escalation
+May 26 21:55:14 <jdixon>	look at the mozilla projects
+May 26 21:55:15 <lusis>	jdixon, I think graphing/display is covered
+May 26 21:55:17 <jdixon>	project
+May 26 21:55:18 <ickymettle>	I can't recall the name right now
+May 26 21:55:29 <jdixon>	lusis: point is, fault detection can use the same format
+May 26 21:55:34 <lusis>	jdixon, right
+May 26 21:55:38 <jdixon>	if people stop reinventing it
+May 26 21:55:43 <jdixon>	accept a simple standard
+May 26 21:55:43 <whack>	lusis: 1) I already know how to use it, 2) ... ?
+May 26 21:55:49 <lusis>	anyone else?
+May 26 21:55:50 <lusis>	heh
+May 26 21:55:53 <jdixon>	and work on the HARD stuff in parallel
+May 26 21:55:59 <joemiller>	hrm, graphing nagios checks
+May 26 21:56:05 <kallistec>	lusis: nagios has all the plugins
+May 26 21:56:07 <whack>	geekle_: I use neither of those features, hehe
+May 26 21:56:14 <jdixon>	nagios -> perfdata -> pnp4nagios -> rrd -> graphite
+May 26 21:56:16 <lusis>	kallistec, and perfdata to boot
+May 26 21:56:24 <whack>	I barely use any of the default plugins in nagios, too
+May 26 21:56:25 <lusis>	jdixon, that's a fucking fucked up workflow
+May 26 21:56:31 <jdixon>	not really
+May 26 21:56:31 <whack>	I don't care abput cpu usage, etc.
+May 26 21:56:32 <kallistec>	lusis: and new ones get written for it because it's the winner
+May 26 21:56:33 <jdixon>	we already used nagios
+May 26 21:56:37 <whack>	check_http is useful, I suppose
+May 26 21:56:39 <jdixon>	so we added pnp4nagios
+May 26 21:56:42 <ickymettle>	lusis: agree
+May 26 21:56:42 <jdixon>	which creates rrd
+May 26 21:56:46 <lusis>	but pnp4nagios works
+May 26 21:56:49 <jdixon>	then we tossed graphite on there
+May 26 21:56:50 <lusis>	roughly
+May 26 21:56:52 <geekle_>	lusis: 3) Nagios plugins... So easy to write too.
+May 26 21:56:53 <jdixon>	now we have advanced correlation
+May 26 21:56:54 <lusis>	jdixon, ahh okay
+May 26 21:57:03 <joemiller>	geekle_, you only get 2 =)
+May 26 21:57:07 <geekle_>	:D
+May 26 21:57:09 <lusis>	hahaha
+May 26 21:57:21 <jdixon>	lusis: I don't LIKE it, but it's cheap and moderately useful
+May 26 21:57:22 <whack>	true enough, exit codes are pretty easy to manage.
+May 26 21:57:30 <lusis>	whack, yep
+May 26 21:57:36 <ickymettle>	one thing that conceptually bothers me is we have nagios running all these checks and alerting, then we have graphite AND ganglia running collecting data but we action that manually
+May 26 21:57:44 <ickymettle>	"look at that spike"
+May 26 21:57:46 <jdixon>	it would be great to have a full feature matrix of all OSS monitoring/trending software
+May 26 21:57:50 <lusis>	ickymettle, that's why I want a "mini nagios" for just alerting
+May 26 21:57:51 <jdixon>	so we could look at the best of breed
+May 26 21:57:54 <jdixon>	and see what fits
+May 26 21:58:01 <joemiller>	lusis, flapjack
+May 26 21:58:01 <ickymettle>	then a bunch of dudes scramble for a while to see what might have caused it
+May 26 21:58:03 <jdixon>	lusis: isn't that mon?
+May 26 21:58:17 <lusis>	jdixon, well escalations and deps too
+May 26 21:58:29 <jdixon>	pageeduty ;)
+May 26 21:58:29 <lusis>	there's a core of nagios that I'd love to just be able to talk to with an API
+May 26 21:58:32 <jdixon>	er, pagerduty
+May 26 21:58:36 <jdixon>	where the fuck is halligan?
+May 26 21:58:40 <whack>	lusis: I'd prefer not nagios since I don't think in "hosts"
+May 26 21:58:55 <jdixon>	whack: agreed, but most people still do. sigh.
+May 26 21:58:56 <whack>	and nagios calls "services" what I do not.
+May 26 21:58:57 <ickymettle>	I guess what i'm getting at is we collect all this data in different places and there are relationships in there - this is probbaly going above and beyond but looking at ways to look for these relationships would be a big monitoring win IMHO
+May 26 21:58:59 <lusis>	whack, yeah totally
+May 26 21:59:03 <whack>	"check_tcp" is not a service.
+May 26 21:59:04 <whack>	it's a check.
+May 26 21:59:10 <jdixon>	it's all about the metrics.
+May 26 21:59:19 <whack>	I have like 20 "services" to make sure our SOLR backends are happy at loggly.
+May 26 21:59:19 <lusis>	ickymettle, right I'm big on not double-dipping
+May 26 21:59:24 <lusis>	I only want to collect once
+May 26 21:59:27 <jdixon>	I NEED THE DATA, BITCHES.
+May 26 21:59:36 <lusis>	hahaha
+May 26 21:59:55 <geekle_>	"It's all about the metrics baby"
+May 26 22:00:01 <jdixon>	indeed
+May 26 22:00:22 <geekle_>	collect once and collect often IMHO
+May 26 22:00:49 <ickymettle>	saying goodbye to munin was the best thing ever
+May 26 22:00:53 <jdixon>	anyone interested in working towards some documented "standards" to help identify interchangeable components?
+May 26 22:01:01 <lusis>	jdixon, feck standards
+May 26 22:01:02 <lusis>	jk
+May 26 22:01:08 <whack>	jdixon: so long as that documentation documents existing things
+May 26 22:01:09 <jdixon>	you know what I mean
+May 26 22:01:10 <whack>	not new things
+May 26 22:01:13 <lusis>	sorry, I put on my ben black hat for a minute
+May 26 22:01:15 <lusis>	;)
+May 26 22:01:16 <jdixon>	not a fucking standards org
+May 26 22:01:24 *	lusis pokes
+May 26 22:01:27 <geekle_>	brb
+May 26 22:01:41 <jdixon>	motivate developers to work towards interchangeable pieces and standards
+May 26 22:01:52 <jdixon>	increase competition on a micro scale
+May 26 22:02:09 <lusis>	hmmmmm
+May 26 22:02:13 <jdixon>	don't give us macro monitoring projects
+May 26 22:02:18 <ickymettle>	oh god wasn't there some CIM (Common Information Model) or something a lot of those big monitoring vendors used to rant on about
+May 26 22:02:19 <kallistec>	jdixon: you could do that maybe on inputs to trending software
+May 26 22:02:19 <jdixon>	give us useful pieces that excel at one thing
+May 26 22:02:24 <lusis>	ickymettle, yeah heh
+May 26 22:02:26 <jdixon>	kallistec: exactly
+May 26 22:02:36 <lusis>	ickymettle, someone brought it up when I posted on the mailing list one time
+May 26 22:02:45 <jdixon>	get rid of the incompatible formats/mechanisms that suck
+May 26 22:03:04 <jdixon>	the problem is a "market" of big monitoring suites that all SUCK at something
+May 26 22:03:16 <kallistec>	jdixon: as far as fault detection/alerting stuff, I think you can see from this discussion there's a lot of area to be explored as far as what the boundaries are between components
+May 26 22:03:21 <ickymettle>	unfrotunately mos of the time they suck at monitoring
+May 26 22:03:21 <ickymettle>	hehe
+May 26 22:03:27 <kallistec>	and what information goes between them
+May 26 22:03:31 <lusis>	okay another round robing
+May 26 22:03:38 <lusis>	s/robing/robin
+May 26 22:03:57 <lusis>	what ARE the components?
+May 26 22:04:03 <lusis>	just for summations sake
+May 26 22:04:07 <lusis>	one line if possible ;)
+May 26 22:04:21 <jdixon>	metrics collection
+May 26 22:04:24 <ickymettle>	collection / correlation / alerting / command + control
+May 26 22:04:32 <jdixon>	storage (caching and persistence)
+May 26 22:04:39 <jdixon>	state engine
+May 26 22:04:49 <ickymettle>	scheduling
+May 26 22:04:53 <jdixon>	fault detection (threshhold rules)
+May 26 22:05:02 <jdixon>	notifications (state engine)
+May 26 22:05:05 <jdixon>	notifications (output)
+May 26 22:05:08 <jdixon>	escalations
+May 26 22:05:11 <jdixon>	dependencies
+May 26 22:05:15 *	lusis smacks jdixon
+May 26 22:05:17 <jdixon>	api
+May 26 22:05:31 *	jdixon stfu's?
+May 26 22:05:34 <lusis>	hahaha
+May 26 22:05:47 <lusis>	kallistec? whack?
+May 26 22:05:52 <kallistec>	hrm
+May 26 22:05:58 <kallistec>	you need all of those things
+May 26 22:06:07 <jdixon>	graphing
+May 26 22:06:10 <kallistec>	some of them are more tightly coupled than others
+May 26 22:06:10 <jdixon>	dashboard
+May 26 22:06:20 <jdixon>	regression analytics (cap plan)
+May 26 22:06:22 <kallistec>	does that mean they go in one application?
+May 26 22:06:42 <geekle_>	ickymettle++
+May 26 22:06:46 <lusis>	kallistec, good question.
+May 26 22:07:13 <kallistec>	if you do, some features work better
+May 26 22:07:29 <ickymettle>	that's a critical question
+May 26 22:07:35 <kallistec>	but you have less flexibility in design
+May 26 22:07:39 <lusis>	so exitcode 2 then
+May 26 22:07:39 <ickymettle>	is it one app to do EVERYTHING
+May 26 22:07:41 <lusis>	=P
+May 26 22:07:51 <ickymettle>	or interoperability
+May 26 22:07:53 <lusis>	ickymettle, I don't think it can be
+May 26 22:08:00 <ickymettle>	agree
+May 26 22:08:02 <lusis>	I think some API is key though
+May 26 22:08:11 <lusis>	and that whatever components exist
+May 26 22:08:13 <lusis>	realize this fact
+May 26 22:08:17 <lusis>	they aren't the system of record
+May 26 22:08:40 <lusis>	I mean they COULD be to some people
+May 26 22:08:44 <kallistec>	for example, critical doesn't have a state machine yet. I could put it on the client, but then you can't easily modify via api
+May 26 22:09:25 <lusis>	kallistec, I'm going to take a look at critical a bit tomorrow
+May 26 22:09:41 <kallistec>	or, the hypothetical server could ping you back and say "that's broken, check it more"
+May 26 22:09:54 <kallistec>	but that introduces more complexity into the design
+May 26 22:10:02 <kallistec>	as just one example
+May 26 22:10:23 <lusis>	I see why whack got quiet
+May 26 22:10:29 <lusis>	he's off benchmarking netty
+May 26 22:10:30 <lusis>	;)
+May 26 22:10:37 <whack>	hah
+May 26 22:10:50 <lusis>	I have twitter wired directly into my brain 
+May 26 22:10:59 <lusis>	anyway
+May 26 22:11:00 <lusis>	heh
+May 26 22:11:19 <lusis>	okay so anything else? I figured a brain dump of random shit was a good first start
+May 26 22:11:39 <lusis>	jdixon, I'll try some sort of matrix like you mentioned
+May 26 22:11:42 <lusis>	hopefully this weekend
+May 26 22:12:18 <kallistec>	lusis: yeah, one more thing
+May 26 22:12:23 <jdixon>	lusis: github it?
+May 26 22:12:30 <lusis>	kallistec, yessir?
+May 26 22:12:35 <lusis>	jdixon, good call
+May 26 22:12:42 <whack>	lusis: I was recently working on some new monitoring stuff to replace nagios with
+May 26 22:12:45 <kallistec>	ppl ask about testing chef cookbooks all the time
+May 26 22:12:48 <whack>	decided I hated myself, so I used node.js
+May 26 22:12:52 <lusis>	whack, hahaha
+May 26 22:12:53 <whack>	15 minutes later, I gave up.
+May 26 22:13:03 <jdixon>	whack: did you see the mozilla thing?
+May 26 22:13:03 <kallistec>	but the rejoinder is that's just monitoring
+May 26 22:13:08 <whack>	jdixon: mozilla thing?
+May 26 22:13:31 <jdixon>	http://graphs-new.mozilla.org/
+May 26 22:13:34 <kallistec>	so one thing I'm interested in is making it easy to use something as both
+May 26 22:13:48 <jdixon>	another reinvented wheel
+May 26 22:13:51 <kallistec>	i.e. run all the checks against this box
+May 26 22:14:04 <kallistec>	rspec style if you will
+May 26 22:14:11 <whack>	jdixon: notice how there's no host obsession with those graphs?
+May 26 22:14:16 <whack>	gasp
+May 26 22:14:17 <whack>	metrics
+May 26 22:14:17 <kallistec>	then in prod you run them scheduled
+May 26 22:14:18 <whack>	without
+May 26 22:14:18 <whack>	a
+May 26 22:14:19 <whack>	host
+May 26 22:14:20 <jdixon>	heh
+May 26 22:14:21 <jdixon>	I know
+May 26 22:14:21 <whack>	!?!
+May 26 22:14:25 <whack>	fucking nagios :(
+May 26 22:14:29 <lusis>	kallistec, hmmmm
+May 26 22:15:30 <kallistec>	i.e., development integration tests are difficult to make into monitoring
+May 26 22:15:35 <whack>	kallistec: yeah, or in my case "run all checks for this service"
+May 26 22:15:39 <ickymettle>	what are those mozilla graphs measuring ?
+May 26 22:15:49 <lusis>	ickymettle, data visualization suckage
+May 26 22:15:52 <lusis>	;)
+May 26 22:15:55 <lusis>	seriously
+May 26 22:16:03 <whack>	ickymettle: likely crash metrics
+May 26 22:16:11 <lusis>	ahh
+May 26 22:16:22 <kallistec>	whack: eh, it's semantics to me at this point ;) "host" = [service1, service2...]
+May 26 22:16:25 <whack>	or perhaps test results
+May 26 22:16:47 <whack>	kallistec: nod, but in the case of horizontal services, one host is not worth checking
+May 26 22:16:54 <whack>	"How is my hadoop cluster doing?"
+May 26 22:16:59 <whack>	vs "How is node 3 doing?"
+May 26 22:17:03 <lusis>	whack, I think the guy with 3 nodes in his LB would disagree ;)
+May 26 22:17:10 <whack>	business metrics want "How is my hadoop cluster performing?"
+May 26 22:17:12 <whack>	so you alert on that.
+May 26 22:17:18 <lusis>	cause that's 33% of his capacity lost
+May 26 22:17:27 <whack>	when there's a problem, you want "How is node 3 doing?" for debugging
+May 26 22:17:30 <jdixon>	I could care less about "how is my X service doing"
+May 26 22:17:49 <jdixon>	what I want to know is "what X is causing failure on Y?"
+May 26 22:18:14 <kallistec>	whack: I think you still want it, if you buy in to running all your checks as verification that your config mgmt did what it should do
+May 26 22:18:37 <whack>	kallistec:  and what if your config management is what pushes your monitoring config?
+May 26 22:18:40 <whack>	(like mine does)
+May 26 22:18:42 *	jdixon avoids rant on business metrics vs IT metrics
+May 26 22:18:57 <whack>	jdixon: business metrics are for alerting, IT metrics are for debugging
+May 26 22:19:01 <kallistec>	whack: yeah, mine does as well
+May 26 22:19:02 <whack>	and maybe capacity plans or such
+May 26 22:19:18 <kallistec>	it's a tricky case at that edge
+May 26 22:19:18 <lusis>	there's value in the intersection
+May 26 22:19:20 <jdixon>	IT metrics are for business
+May 26 22:19:26 <jdixon>	they're one and the same
+May 26 22:19:31 <jdixon>	the point is TO FUCKING MAKE MONEY
+May 26 22:19:42 <jdixon>	IT is there to support your business, not vice versa
+May 26 22:19:46 <whack>	jdixon: "load average on node253235 is greater than 3.4!!!" is not a business metric
+May 26 22:20:09 <jdixon>	"what is causing my servers to slow down and stop selling shit, causing me Y lost sales per hour"
+May 26 22:20:22 <whack>	"ad click throughs dropped 30% after we deployed an hour ago"
+May 26 22:20:23 <lusis>	jdixon, EC2
+May 26 22:20:25 <lusis>	;)
+May 26 22:20:28 <kallistec>	whack: anyway, the example I'm getting at is you push bad config to 1/N, detect that it sucked and stop rolling through
+May 26 22:20:31 *	jdixon smacks lusis with a whack 
+May 26 22:20:35 <lusis>	hahahaha
+May 26 22:21:05 <lusis>	kallistec, ahhh I see where you're going now
+May 26 22:21:09 <lusis>	I was a bit fuzzy
+May 26 22:21:19 <kallistec>	the overall system will hardly notice unless you're at/near 100%
+May 26 22:21:27 <kallistec>	in which case you're screwed anyway
+May 26 22:23:01 <whack>	From my point of view, what would help me  write code if I decided to reinvent a monitoring wheel, is some list of what folks wanted to do
+May 26 22:23:04 <kallistec>	all the existing work in this area focuses on reusing testing tools, but the impedance mismatch there is lame
+May 26 22:23:14 <whack>	like "What I want monitoried and how I want to interact with it"
+May 26 22:23:35 <lusis>	whack, I think the problem there is that it's too big of a pool
+May 26 22:23:37 <whack>	like, I'd love to have a "false alarm!" button.
+May 26 22:24:26 <ickymettle>	that kinda comes back to being able to correlate more that just checkes
+May 26 22:24:28 <lusis>	what would you do with the false alarm button?
+May 26 22:24:33 <lusis>	have it learn from it?
+May 26 22:24:41 <whack>	lusis: track it, get a report later that says "this check is noisy"
+May 26 22:24:47 <whack>	rather than having folks bitch about how nagios sucks
+May 26 22:24:48 <ickymettle>	each week in our monitor review it's like ... oh yeah 80% of those criticals were changes we made rather than real problems
+May 26 22:24:50 <whack>	I'd see "this check sucks"
+May 26 22:24:59 <lusis>	whack, gotcha
+May 26 22:25:05 <whack>	there's no feedback 
+May 26 22:25:07 <kallistec>	yeah, that would be dope
+May 26 22:25:18 <whack>	other than a coworker going "Fucking pagerdugy woke me up at 3am again"
+May 26 22:25:25 <whack>	"and it went away by the time I checked it"
+May 26 22:25:28 <kallistec>	lol, each monitor can have a "dislike" button
+May 26 22:25:32 <ickymettle>	so if we could say .. "this cookbook change modified httpd.conf and they went boom" can tag that as we broke
+May 26 22:25:34 <whack>	kallistec: hah
+May 26 22:25:38 <whack>	hook that shit up with facebook
+May 26 22:25:40 <whack>	"like"
+May 26 22:25:41 <kallistec>	and you can unfriend them
+May 26 22:26:03 <lusis>	kallistec, sounds like datadog ;)
+May 26 22:26:20 <lusis>	kallistec, combine yammer/facebook with graphite
+May 26 22:26:24 <ickymettle>	oh man if you could solve the "and it went away by the time I checked it" problem this new monitoring system would be a winner haha
+May 26 22:26:40 <whack>	so
+May 26 22:26:43 <ickymettle>	new definition of "social graph"
+May 26 22:26:47 <whack>	you're asking for a diaspora-based monitoring tool
+May 26 22:27:06 <kallistec>	ickymettle: well, the answer is to build useful metrics into your app
+May 26 22:27:27 <jdixon>	yes, the social aspect is useful only to a subset
+May 26 22:27:32 <kallistec>	sadly, by the time you REALLY need it, it's too late
+May 26 22:27:44 <whack>	"I didn't get that alert because I didn't friend it"
+May 26 22:27:45 <whack>	I like this.
+May 26 22:27:47 <lusis>	hahahaha
+May 26 22:27:52 <jdixon>	the biggest problem with nagios is the degredation/abstration of data
+May 26 22:27:58 <ickymettle>	going back to new relic one feature that was kinda nice is the ability to annotate graphs
+May 26 22:28:11 <whack>	ickymettle: yeah
+May 26 22:28:14 <jdixon>	indeed
+May 26 22:28:19 <lusis>	ickymettle, that's what datadog is doing too
+May 26 22:28:21 <geekle_>	Crowdsourced monitoring tool?
+May 26 22:28:22 <whack>	oncall can click and mark notes and such
+May 26 22:28:24 <geekle_>	:D
+May 26 22:28:27 <jdixon>	that was on my circonus roadmap. sigh.
+May 26 22:28:32 <lusis>	take that and add in a discussion thread
+May 26 22:28:41 <jdixon>	annotating events is huge
+May 26 22:28:42 <kallistec>	yeah, as far as graphs, what you need is multiple y axis scales also
+May 26 22:28:48 <jdixon>	kallistec: indeed
+May 26 22:28:52 <jdixon>	reconnoiter does that
+May 26 22:28:53 <lusis>	http://www.datadoghq.com/
+May 26 22:28:56 <kallistec>	saddest part about graphite
+May 26 22:29:04 <jdixon>	kallistec: I'm working on that for graphite.
+May 26 22:29:08 <kallistec>	though it's just the front end
+May 26 22:29:13 <kallistec>	jdixon: rock on man
+May 26 22:29:33 <whack>	re: dashboarding; a friend of mine is/was working on a dashboard tool for graphite
+May 26 22:29:46 <jdixon>	take a number :-P
+May 26 22:30:00 <whack>	https://github.com/fetep/pencil
+May 26 22:30:04 <whack>	no idea what the status is
+May 26 22:30:35 <lusis>	anyone see the project danryan is working on?
+May 26 22:30:53 <lusis>	https://github.com/danryan/overwatch
+May 26 22:31:12 <lusis>	kallistec, hahhaha
+May 26 22:31:59 <ickymettle>	pencil needs screenshots :(
+May 26 22:32:12 <lusis>	okay so something that would help
+May 26 22:32:17 <whack>	overwatch sounds like a weaker version of esper
+May 26 22:32:20 <lusis>	run off some project names
+May 26 22:32:23 <lusis>	links
+May 26 22:32:24 <lusis>	whatever
+May 26 22:32:27 <whack>	ESPER
+May 26 22:32:38 <lusis>	so I have it
+May 26 22:32:49 <ickymettle>	one thing I just realised in this entire discussion "hard to configure" was never mentioned
+May 26 22:32:57 <ickymettle>	IMHO nagios isn't hard to configure
+May 26 22:33:06 <whack>	ickymettle: nod
+May 26 22:33:08 <jdixon>	ickymettle: when I said "hard to deploy", that's what I meant
+May 26 22:33:09 <whack>	cacti wins worst
+May 26 22:33:16 *	jdixon shudders
+May 26 22:33:22 <ickymettle>	it's verbose but not hard ... but almost every single "new monitoring" project starts with "nagios is so hard to configure" as one of the goals they want to fix
+May 26 22:33:22 <lusis>	ickymettle, I think the prevaling thought is configuration would be driven outside
+May 26 22:33:23 <whack>	or anything without a web-ui-only configuration
+May 26 22:33:37 <whack>	ickymettle: yeah
+May 26 22:33:45 <whack>	on the scale of things, configuring nagios is easy
+May 26 22:33:45 <lusis>	ickymettle, just an assumption that any "new" tool would have "an api"
+May 26 22:33:48 <kallistec>	ickymettle: eh, sorta, there's a whole lot of nagios worldview you need to buy into to get it
+May 26 22:33:51 <whack>	lusis: yeah you can still do that by generating a config file.
+May 26 22:33:51 <ickymettle>	lusis: in my previous gig I had puppet automatically configuring services in nagios when they are deployed
+May 26 22:33:54 <kallistec>	and then it's super easy
+May 26 22:33:56 <whack>	kallistec: yes
+May 26 22:34:00 <lusis>	ickymettle, same here
+May 26 22:34:02 <jdixon>	wouldn't it be cool to have something like Sass for nagios?
+May 26 22:34:05 <whack>	I don't like the worldview of nagios, but otherwise it's easy
+May 26 22:34:06 <ickymettle>	so deploy ssh on a box it automagically gets a service check added ...
+May 26 22:34:12 <whack>	jdixon: you mean sass for monitoring.
+May 26 22:34:18 <jdixon>	well, sorta
+May 26 22:34:23 <jdixon>	a preprocessor for nagios configs
+May 26 22:34:25 <whack>	meh
+May 26 22:34:31 <whack>	I haven't hand-written nagios configs, ever.
+May 26 22:34:35 <whack>	puppet always generates them for me
+May 26 22:34:41 *	jdixon bows before whack 
+May 26 22:34:43 <whack>	whether th built-in nagios_* types or with a template
+May 26 22:34:47 <jdixon>	s/bows/kneels/
+May 26 22:34:52 <whack>	Kneel before Zod.
+May 26 22:34:54 <kallistec>	heh
+May 26 22:35:07 <whack>	but you know, generating requires coding skills
+May 26 22:35:14 <ickymettle>	yeah we've just started getting chef to setup nagios checks for us too now
+May 26 22:35:16 <whack>	and I totally don't expect sysadmins to have that everywhere
+May 26 22:35:20 <jdixon>	whack: hey, at least I KNOW I'm your bitch. I'm one step ahead of everyone else.
+May 26 22:35:22 <whack>	which is why nagios supports those crazy "template" stuffs
+May 26 22:35:35 <whack>	which is totally awesome if you can't code but understand nesting things like that
+May 26 22:35:47 <ickymettle>	chef + nagios config automation is much cleaner than the puppet mess
+May 26 22:35:53 <kallistec>	lol
+May 26 22:35:58 <whack>	ickymettle: to each his own ;)
+May 26 22:36:01 <lusis>	NO TOOL WARS
+May 26 22:36:03 <lusis>	=P
+May 26 22:36:11 <ickymettle>	:)
+May 26 22:36:16 <lusis>	we all know "         " wins
+May 26 22:36:29 <ickymettle>	I hate both of them equally
+May 26 22:36:29 <jdixon>	have we covered the major bits?
+May 26 22:36:36 <jdixon>	I have some wireframing to do. :-P
+May 26 22:36:40 <lusis>	jdixon, I think so. For now I'm going to raw dump the log to a repo
+May 26 22:36:45 <jdixon>	yay
+May 26 22:36:53 <lusis>	so if anyone has any final words?
+May 26 22:36:55 <lusis>	heh
+May 26 22:37:03 <whack>	Suck it.
+May 26 22:37:05 <jdixon>	was this a bitch session, or do we have a vague goal in mind?
+May 26 22:37:15 <whack>	jdixon: you're supposed to ask for the agenda BEFORE the meeting
+May 26 22:37:16 <whack>	GOSH
+May 26 22:37:20 <jdixon>	orite
+May 26 22:37:30 <lusis>	jdixon, I need to hire a few consultants from IBM to answer that
+May 26 22:37:32 <kallistec>	jdixon: lol, was pretty helpful to me
+May 26 22:37:35 <lusis>	have some meetings
+May 26 22:37:38 <jdixon>	;)
+May 26 22:37:48 <lusis>	honestly though
+May 26 22:37:58 <lusis>	I just wanted a brain dump from everyone who wanted to participate
+May 26 22:38:09 <lusis>	for the first run anyway
+May 26 22:38:22 <geekle_>	brain dump was a good idea.
+May 26 22:38:28 <ickymettle>	yup
+May 26 22:38:35 <lusis>	I hate getting caught in semantic confusion
+May 26 22:38:37 <ickymettle>	I actually have an idea i'm gonna go and hack on now
+May 26 22:38:39 <lusis>	I say monitoring
+May 26 22:38:45 <lusis>	you hear "metrics"
+May 26 22:38:50 <jdixon>	holy shit that was a lot of dumping
+May 26 22:38:51 <lusis>	that kind of bullshit
+May 26 22:39:00 <whack>	lusis: also probably worth reviewing "in house" tools?
+May 26 22:39:07 <geekle_>	Be back later.
+May 26 22:39:08 <lusis>	whack, define in house for me
+May 26 22:39:12 <lusis>	heh
+May 26 22:39:22 <whack>	lusis: like, look at what everyone else uses internally-built stuff that blogs about
+May 26 22:39:28 <lusis>	ahh right
+May 26 22:39:37 <jdixon>	ickymettle: I expect you etsy peeps to put all those magic scripts up on github now.
+May 26 22:39:48 <jdixon>	the ones you've been holding out on. ;)
+May 26 22:39:57 *	jdixon loves starting rumors
+May 26 22:39:57 <lusis>	jdixon, +1000
+May 26 22:40:11 <lusis>	whack, okay I gotcha
+May 26 22:40:28 <lusis>	I've got some stuff in evernote I can try and dump
+May 26 22:40:54 <lusis>	not sure the best way for people to add that shit except fork a fucking text file 
+May 26 22:40:55 <lusis>	hehe
+May 26 22:41:00 <whack>	lusis: mostly because in-house is usally solving "Shit sucks, we'll do it better for our needs"
+May 26 22:41:03 <lusis>	need a shared delicious
+May 26 22:41:11 <lusis>	or something
+May 26 22:41:27 <lusis>	whack, totally
+May 26 22:43:35 <lusis>	hrmmm
+May 26 22:44:09 <ickymettle>	is a summary of the chat a better starting point? or the raw log
+May 26 22:45:11 <lusis>	everyone gimme your github usernames real quick
+May 26 22:45:18 <ickymettle>	ickymettle
+May 26 22:45:22 <kallistec>	danielsdeleo
+May 26 22:45:23 <lusis>	ickymettle, for now I'm going to add just the log dump
+May 26 22:45:31 <lusis>	I'll create a markdown as soon as I can
+May 26 22:45:33 <ickymettle>	np
+May 26 22:45:36 <kallistec>	it's in the damn log already!!
+May 26 22:45:42 <ickymettle>	need a collaborative mindmap
+May 26 22:45:45 <portertech>	back
+May 26 22:45:48 <portertech>	portertech
+May 26 22:46:05 <jdixon>	obfuscurity
+May 26 22:46:37 <lusis>	anyone else?
+May 26 22:47:17 <jdixon>	yer mom
+May 26 22:47:27 <lusis>	funny =)
+May 26 22:47:38 <lusis>	okay 
+May 26 22:47:42 <lusis>	create a new org on github
+May 26 22:47:44 <lusis>	everyone is in it
+May 26 22:48:06 <jdixon>	yay
+May 26 22:48:18 <ickymettle>	cool
+May 26 22:49:01 <ickymettle>	add lozzd too
+May 26 22:49:01 <lusis>	https://github.com/monitoringsucks
+May 26 22:49:07 <lusis>	ickymettle, k
+May 26 22:49:14 <ickymettle>	he'll be really keen to comment
+May 26 22:49:25 <lusis>	done
+May 26 22:49:31 <lusis>	anyone else you guys can think of?
+May 26 22:50:18 <lusis>	okay. closing the log. Thank you all seriously
+May 26 22:50:22 <lusis>	I know it was rather random
+May 26 22:50:34 <ickymettle>	anytime ... this was a great idea
