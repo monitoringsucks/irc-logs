@@ -1,0 +1,730 @@
+09:00 <lusis> *tap tap* is this thing on?
+09:00 <kallistec> yeah, 0.9.7, nasty bug
+09:00 <kallistec> but we should continue
+09:01 <spike> is it time?
+09:01 <lusis> so the plan is for the stuff in the Gist I linked to take up maybe 30 minutes
+09:01 <jamesturnbull> is it time yet? is it time yet? :)
+09:01 <lusis> and let people noodle from there
+09:01 <lusis> I'm not planning on needing to leverage the whole ops thing
+09:01 <cwebber> lusis: can you please post the gist again?
+09:01 <lusis> cwebber: sure. It's also in the topic
+09:01 <lusis> http://goo.gl/yt7cl
+09:02 <lusis> So hitting up the first stuff (repository status)
+09:02 <lusis> really quickly
+09:02 <lusis> anyone who wants commit access not have it yet?
+09:02 <zts> yeah, that'd be handy
+09:02 <lusis> if so, just shoot me a message
+09:03 <lusis> okay so with that out of the way
+09:03 <spike> lusis: .o/ commit access would be good, ta
+09:03 <spike> I'm 'spikelab'
+09:03 <whack> whoa
+09:04 <lusis> I'm not sure the best way to tackle the next stuff but I think we all probably need to agree to some semantics
+09:04 <lusis> so that we aren't confusing the discussion
+09:05 <kallistec> so... events, fight?
+09:05 <lusis> kallistec: yeah I'm thinking for a sec
+09:05 <kallistec> :P
+09:05 <lusis> so here's my question
+09:06 <lusis> there's two "sets" of semantics here
+09:06 <lusis> one is around the components
+09:06 <lusis> the other is around the specifics (for lack of a better word)
+09:06 <kallistec> primitives
+09:06 <lusis> right
+09:06 <lusis> heh
+09:06 <lusis> which is better to start with?
+09:07 <lusis> seems to me that defining primitives leads to components to handle those
+09:07 <kallistec> primitives are pretty core for everyone having a discussion
+09:07 <spike> +1 primitive
+09:07 <lusis> k
+09:07 <lusis> okay so the first one: the data
+09:07 <lusis> metrics?
+09:07 <lusis> too loaded?
+09:08 <whack> lusis: too specific
+09:08 <lusis> really
+09:08 <cwebber> i disagree
+09:08 <spike> since we have events I think metrics aren't too loaded and just fine
+09:08 <kallistec> well, I'll take a stab: metrics are raw numerical data collected by "measurement apparatus"
+09:08 <whack> mostly I think metrics == numbers
+09:08 <cwebber> it is a good starting point
+09:08 <kallistec> y/n?
+09:08 <zts> datum ?
+09:09 <spike> kallistec: y
+09:09 <whack> metrics != JUnit xml output
+09:09 <cwebber> so is state a metric then?
+09:09 <lusis> cwebber: good point
+09:09 <cwebber> boolean perhaps
+09:09 <vvuksan> yes state is a metric
+09:09 <lusis> So mattray defined it as "raw data"
+09:09 <whack> cwebber: nagios has 4 states that are numbers
+09:09 <kallistec> yes, that's what I was thinking as well
+09:09 <lusis> something that's acted upon?
+09:09 <whack> if you have a finite number of states, you can make them numbers/metrics
+09:09 <spike> cwebber: state is a metric to me, yes. it's a numerical representation of a status.
+09:10 <whack> however, if they are discrete, they aren't necessarily comparable (is 3 (unknown in nagios) worse than 2 (critical)?)
+09:10 <cwebber> but most of those states, are derived from other metrics
+09:10 <cwebber> i.e. it is state 2 because the metric of response time is greater than 10
+09:10 <lusis> hmmm
+09:11 <spike> actually, numberical is probably not correct, more like a "single word" value for a label
+09:11 <cwebber> i would argue that state is not a metric, it is a <something else>
+09:11 <spike> so server = up to me is still a metric
+09:11 <spike> service = up even
+09:11 <JonWood> I'd agree with cwebber
+09:11 <whack> cwebber: +1
+09:11 <lusis> I think I'd agree as well that state is not
+09:11 <spike> which can be represented with numbers too, but that's irrelevant
+09:11 <lusis> mainly for this reason
+09:11 <lusis> take a nagios service check
+09:11 <JonWood> Metrics would be a comparable numeric value IMO, something that it's useful to graph.
+09:11 <whack> state is more like closer to health/alerting decisions which is more about taking data than giving data
+09:11 <lusis> the state results in data (latency, response time, whatever)
+09:12 <lusis> or am I being too "nagios"-y?
+09:12 <whack> lusis: don't forget plain text log output from checks
+09:12 <lusis> whack: good point
+09:12 <whack> like, hudson supports JUnit stuff - if it fails, you get "Shit's broke, yo" and you can drill into the junit result output to find out whree/what failed
+09:12 <whack> so there's more than just numerical data
+09:13 <f3ew> Some metrics are simple, others are complex?
+09:13 <kallistec> whack: but would you call it a metric? or log data, event, annotation?
+09:13 <kallistec> etc.?
+09:13 <lusis> f3ew: and does it make a difference
+09:13 <whack> kallistec: i don't think I'd call it a metric, you can't really graph it.
+09:13 <lusis> whack: I wouldn't get into graphing just yet
+09:13 <whack> lusis: mainly, metrics are generally about numbers
+09:14 <whack> not annotations, debug logs, etc
+09:14 <lusis> whack: I might disagree with that partially
+09:14 <spike> aren't metrics properties of an object that describe the object? in which case status is a metric too because it described the object
+09:14 <vvuksan> whack: you can graph states
+09:14 <vvuksan> why not ?
+09:14 <whack> vvuksan: states are not logs, sir
+09:14 <whack> 3 megs of junit output is not a metric
+09:14 <f3ew> lusis, it depends on the context. In terms of what the metric means to humans, it matters. In terms of collection, not so
+09:14 <lusis> it's a metric of "fuckedupness" ;)
+09:14 <lusis> I guess there's an aspect to take into account
+09:14 <vvuksan> why can't 3 megs of junit output be a metric
+09:15 <lusis> a graph considers a metric to be numeric values
+09:15 <lusis> generally speaking
+09:15 <whack> vvuksan: because most log output requires humans to read and understand
+09:15 <kallistec> vvuksan: the content, no. the megs of junit output, if you wish
+09:15 <whack> metrics don't require humans to read and understand it to be useful; 10ms latency is 10ms latency.
+09:15 <vvuksan> true
+09:15 <vvuksan> got no argument there
+09:15 <jbuchbinder> I think Vlad might have meant to graph the number of errors, warning, etc.
+09:15 <f3ew> whack, the rate of log growth, OTOH, is an interesting metric
+09:15 <whack> so, I don't know what to call "log output" or similar crap, though
+09:15 <jbuchbinder> *That* seems like useful metrics to gather.
+09:16 <whack> f3ew: I'm not talking about application logs
+09:16 <mattray> when I wrote about metrics, I just meant raw data that is acted upon.
+09:16 <whack> I'm saying, what if you have a JUnit (or rspec, or cucumber) test suite in nagios.
+09:16 <lusis> so how about we just call it "data"
+09:16 <lusis> ?
+09:16 <mattray> works for me
+09:16 <vvuksan> good
+09:16 <lusis> and leave the aspect naming to the component?
+09:16 <kallistec> lusis: not specific enough
+09:16 <cwebber> agreed
+09:16 <f3ew> Hell, metrics are numerical values we want to measure and trend
+09:16 <rberger> metrics may be buried in logs
+09:16 <f3ew> Does that work for everyone?
+09:17 <cwebber> f3ew: +1
+09:17 <whack> f3ew: +1
+09:17 <lusis> kallistec: I'm at a loss then. We're basically talking about the core "thing" that triggers everything else in "monitoring"
+09:17 <zts> f3ew: +1
+09:17 <flagg0204> f3ew +1
+09:17 <lusis> f3ew wins
+09:17 <whack> hah
+09:17 <lusis> meeting over
+09:17 <lusis> jk
+09:17 <f3ew> hehe
+09:17 <kallistec> lusis: I'm with the restriction to numerical data
+09:17 <whack> still misses how to handle non-numerical data though
+09:17 <lusis> okay so since we're making that distinction, what about the "other stuff"?
+09:17 <mattray> non-numerical converts to numerical at some point
+09:17 <lusis> enumerate the "other stuff"s
+09:17 <spike> whack: translate it to numbers somehow?
+09:18 <mattray> what lusis said
+09:18 <lusis> a log event?
+09:18 <zts> no, I don't think it should be translated to numbers
+09:18 <whack> nagios "perfdata" is what I would consider metrics, the 'log output' is generally only useful for displaying to humans for debugging
+09:18 <f3ew> whack, non numerical data of what sort?
+09:18 <kallistec> mattray: not if there's context, i.e., english language text in a log message
+09:18 <lusis> wait
+09:18 <f3ew> zts, depends
+09:18 <whack> f3ew: A cucumber test checking the health of a service failed and emitted an exception
+09:18 <whack> that exception is useful in debugging the problem.
+09:18 <whack> it is not a metric.
+09:18 <lusis> it sounds like we're talking about metadata for a metric
+09:18 <lusis> a context
+09:18 <zts> f3ew: agreed.  I mean, "I don't think everything should be reduced to numbers"
+09:18 <mattray> kallistec: count of occurences of the message we care about
+09:18 <f3ew> zts, agreed
+09:18 <whack> lusis: context I think is good
+09:18 <jdixon> oh wtf, I was in the wrong channel.
+09:19 <f3ew> Context is a good term for data around metrics
+09:19 <whack> metric + context like perfdata and 'long output' in nagios (not that nagios is good)
+09:19 <whack> event == (metric + context)
+09:19 <f3ew> right
+09:19 <spike> whack: the fact it failed can be a metric, the log line itself would be an event message.
+09:19 <whack> rather, metric + context +timestamp
+09:19 <jamesc> A metric is something that can be measured.
+09:19 <whack> spike: you just said convert it to a number; so convert the log to a number? Fails hard.
+09:19 <zts> whack: a single metric by definition, or could there be more than one?
+09:19 <jamesc> For me an event is just a bunch of context
+09:19 <spike> whack: or you could drill them, graph the number of failures and cliking on that number gives you the log line.
+09:20 <whack> spike: especially when it's 2 megs of junit xml output
+09:20 <f3ew> Something happened. A counter goes up (metric). A message shows up (context). A system state changes (event)
+09:20 <whack> spike: it's quite often not one line.
+09:20 <spike> whack: convert the fact that at timestamp xyz test abc failed
+09:20 <lusis> not that it matters
+09:20 <lusis> but logging does generate "metrics"
+09:20 <spike> that can be expressed in numbers and you can see the trend of those failures
+09:20 <lusis> number of a given event
+09:20 <whack> spike: I'm not innterested in trend
+09:20 <f3ew> Something happened. A counter goes up (metric). A message shows up (context). A system state changes (event) <============== is that a decent enough set of definitions to work with?
+09:20 <lusis> just to restate the obvious
+09:20 <whack> I'm saying - shit broke, I need to fix it, and the test shoul tell me what's broken
+09:20 <jamesc> lusis:  One can compute a metric from a bunch of events
+09:21 <jamesc> a Log line, or exception is an event.
+09:21 <spike> whack: ok, is that an even then?
+09:21 <spike> event*
+09:21 <f3ew> jamesc, a complex metric
+09:21 <lusis> right but that correlation is higher order
+09:21 <lusis> component dependent
+09:21 <lusis> imho
+09:21 <whack> spike: I'm saying the log/output/string data from a check is context
+09:21 <jamesc> lusis: Sure - something processes events and produces metrics
+09:21 <cwebber> i would agree event != metric, metrics cans be used to give context to events etc
+09:22 <cwebber> i.e. what was the metric for foo just before foo stopped working
+09:22 <lennartk_> (hey everybody. i was waiting in #monitoringsucks :D)
+09:22 <f3ew> heh
+09:22 <lusis> okay so about this from f3ew: A counter goes up (metric). A message shows up (context). A system state changes (event)
+09:22 <whack> cwebber: in logging, an event is an entry in the logs, so it would make sense to call a metric/testresult was an event (data + timestamp)
+09:22 <lusis> lennartk_: no worries
+09:22 <lusis> lennartk_: we defined a word!
+09:22 <mattray> that's why I had metrics->thresholds->events
+09:22 <kallistec> yeah, you can shove events into graphite for example, but they're distinct from other things since you draw them as infinite
+09:23 <lusis> okay soooo
+09:23 <whack> I'm still sticking with event == one metric + any context/output + timestamp
+09:23 <spike> +1 to that
+09:23 <f3ew> whack, timestamp is context
+09:23 <lusis> whack: I don't think timestamp is ness. relevant in the scope
+09:23 <cwebber> whack: but can you have an event that doesn't have a metric?
+09:23 <lusis> it feels like context
+09:23 <f3ew> But +1 to that
+09:24 <whack> f3ew: so I'll redraw
+09:24 <kallistec> I think you can. a deploy is an important event
+09:24 <whack> event = metric + context (like text output, timestamp, origin, host, etc)
+09:24 <kallistec> you can derive a metric from it, deploys/s or whatever
+09:24 <lusis> I knew I should have started with use cases ;)
+09:24 <f3ew> whack +1
+09:24 <mattray> good point, metrics require a timestamp
+09:24 <lusis> okay so event = metric + context?
+09:24 <f3ew> mattray, not necessarily
+09:25 <mattray> f3ew: then how do you graph it?
+09:25 <whack> lusis: assuming metric and context are defined in agreement, yes ;)
+09:25 <lusis> context is metadata about a metric
+09:25 <lusis> regardless of content
+09:25 <lusis> imho
+09:25 <lusis> the "details" of the metric?
+09:25 <rberger> event = timestamp+source+value+unit-of-measure
+09:25 <Damm> I'm going to use chef metadata
+09:25 <Damm> for monitoring
+09:25 <Damm> that's how badly monitoring sucks
+09:25 <Damm> j/k
+09:25 --- Irssi: ##monitoringsucks: Total of 65 nicks [5 ops, 0 halfops, 0 voices, 60 normal]
+09:25 <cwebber> whack +1 (everything has a measurable metric)
+09:25 <Damm> sorry I had to say something random to fix my brain
+09:26 <f3ew> mattray, I could just do a histogram of event counts
+09:26 <rberger> histogram is post processing
+09:26 <lusis> f3ew: but that's an implementation detail
+09:26 <whack> speaking of timestamps
+09:26 <jamesc> mattray: timestamp is just another piece of context.
+09:26 <whack> what metrics don't have timestamps?
+09:26 <jbuchbinder> Agreed. Everything can be reduced to numbers.
+09:26 <jamesc> But one that is pretty important
+09:26 <whack> in monitoring.
+09:26 <lusis> whack: fair question
+09:27 <jamesc> whack: #errors in a timeperiod does not have a unique timestamp
+09:27 <lusis> whack: disk usage is a meric
+09:27 <lusis> er metric
+09:27 <lusis> when it cross a threshold is a different matter
+09:27 <lusis> and THAT is a timestamp
+09:27 <whack> jamesc: I think you're being too specific about what a timestamp is
+09:27 <kallistec> jbuchbinder: some things can only be reduced to numbers by agreement, states, characters in an alphabet
+09:27 <whack> a year can be a timestamp.
+09:27 <mattray> I still consider metrics the raw data, so you need a timestamp even if you discard it later
+09:27 <f3ew> A timestamp is a point in time. A year is an interval
+09:27 <jamesc> whack: I consider a  year to be a period
+09:27 <rberger> The data is meaningless without a timestamp
+09:27 <f3ew> (or a period)
+09:28 <whack> f3ew: ISO8601 allows you to write teimestamps in a standard way
+09:28 <f3ew> rberger, data without context is meaningless
+09:28 <zts> I think metrics have timestamps
+09:28 <cwebber> so how does say a bgp route disappearing factor into a metric?
+09:28 <whack> 2011-07-03 is a valid iso8601 timestamp
+09:28 <rberger> f3ew correct
+09:28 <bmorriso> +1 rberger.  w/o a timestamp, the data is useless
+09:28 <jamesc> whack: Yes, that's right.
+09:28 <rberger> timestmap is the key context
+09:28 <mattray> cwebber: when did it happen?
+09:28 <f3ew> bmorriso, a timestamp may not be sufficient context
+09:28 <rberger> source is the next key context
+09:28 <whack> *nobody* I know uses the 'period' syntax like 2011-01-01+1Y or whatever it is
+09:28 <bmorriso> f3ew, may not be sufficient, but is necessary
+09:28 <lusis> are we in an ISO8601 timestamp rabbit hole?
+09:29 <whack> lusis: hah
+09:29 >>> lusis is just chekcing
+09:29 <whack> just using it as an example
+09:29 <cwebber> mattray: but that is a context not an actual metric IMHO
+09:29 <lusis> whack: heh
+09:29 <whack> saying timestamps aren't required to be specific
+09:29 <whack> especially given you'll find disagreement about precision (seconds vs milliseconds vs microseconds vs ...)
+09:29 <JonWood> Can the timestamp just be defined as "when this metric was reported"
+09:29 <f3ew> bmorriso, I think I would still prefer to define a metric purely as a number, usually obtained at a specific point in time
+09:29 <rberger> whack timestamp should be as specific as possible/relevent
+09:29 <mattray> JonWood: if that's all you have, yes
+09:29 <whack> rberger: indeed
+09:29 <f3ew> The specific point in time is context
+09:30 <rberger> timestamp should at least be when it was generated from the source
+09:30 <lusis> but timestamp is still context
+09:30 <lusis> correct?
+09:30 <whack> lusis: yeah
+09:30 <f3ew> lusis, yes
+09:30 <lusis> we're not moving off that idea?
+09:30 <spike> are we moving forward?
+09:30 <lusis> okay cool
+09:30 <whack> lusis: I thought we were done with context :(
+09:30 <jamesc> f3ew: Right some sort of time information is required in the context.
+09:30 <f3ew> What bits of context are essential is up for debate
+09:30 <garethr> is errors in in a timeperiod really a metric though? is it not the post processed count of those individual (timestamped) errors?
+09:30 <lusis> I thought we were still stuck on context
+09:30 <lusis> sorry
+09:30 >>> lusis is also taking notes on the side
+09:30 >>> lusis needs dragon dictate
+09:30 <mattray> garethr: correct
+09:30 <lusis> =P
+09:31 <vvuksan> garethr: it's computed "metric"
+09:31 <lusis> also trying to make sure we walk away with something "consumable"
+09:31 <lusis> heh
+09:31 <spike> +1 lusis
+09:31 <jamesc> garethr: I would say the actual timestamped error is not a metric.
+09:31 <lusis> okay so event
+09:31 <jamesc> It's an event, something that happened.
+09:31 <lusis> did we get a consensus on that?
+09:31 <jbuchbinder> Are we categorizing the errors, or just "an error"?
+09:31 <lusis> event = metric + context?
+09:31 <f3ew> lusis, right
+09:32 <lusis> jbuchbinder: categorization is higher level I think
+09:32 <f3ew> An event should result in a state change in a system
+09:32 <lusis> for this scope
+09:32 <rberger> yep, but you'll have to define metric and context at some point, though I think we touched on those
+09:32 <whack> f3ew: not necessarily
+09:32 <f3ew> (log file entry, nagios alert, whatever)
+09:32 <lusis> f3ew: I disagree
+09:32 <kallistec> I don't really get that defn.
+09:32 <lusis> kallistec: which one?
+09:32 <kallistec> I think events as something closer to a log message
+09:32 <jbuchbinder> A metric is a numerical representation of something over time, right?
+09:32 <spike> I thought we had consensus on event = metric + context and we defined metric as a number you can graph and context as anything including a timestamp or text message
+09:33 <rberger> numerical representation of something at a time instant
+09:33 <whack> f3ew: I think thre are at least two kinds of events, edge and line triggered
+09:33 <f3ew> Metrics are numerical values we want to measure and trend <========== jbuchbinder
+09:33 <jbuchbinder> That's better.
+09:33 <rberger> f3ew +10
+09:33 <kallistec> A metric could be derived from an event rate or count
+09:33 <lusis> trending still feels out of scope
+09:33 <rberger> DERIVED is right
+09:33 <rberger> its not the base metric
+09:33 <f3ew> Or, just stuff we want to measure
+09:33 <mattray> lusis: agreed, I left that to the presentation
+09:33 <jbuchbinder> Log events, then, *could* be metrics if transformed into numerical values.
+09:33 <cwebber> there seem to be a few events though that don't map well onto a metric
+09:33 <f3ew> jbuchbinder, yes
+09:33 <rberger> events are in logs
+09:33 <jamesc> f3ew + 1 : things we want to measure
+09:34 <whack> jbuchbinder: you lose so much data if you convert a string of text into a number.
+09:34 <f3ew> cwebber, an example please?
+09:34 <spike> cwebber: like what?
+09:34 <cwebber> bgp route goes away
+09:34 <kallistec> or deploys, etc
+09:34 <jamesc> I think we confuse event and context
+09:34 <jamesc> bgp route goes away could just be context
+09:34 <whack> event = metric + context
+09:34 <spike> cwebber: isn't a metric where the value is boolean and the context is the route in question?
+09:35 <jbuchbinder> whack: True -- if you're only generating a single metric with it. If you're pulling the pertinent data into several metric values, you can have some sort of graphical representation of the data therein.
+09:35 <spike> and maybe other info in the context like when it went away
+09:35 <cwebber> spike i can live with a boolean metric
+09:35 <whack> jamesc: well, 'bgp route goes away' == 'bgp route is not healthy' == 'bgp route health == 0' or somesuch
+09:35 <rberger> Think statsd
+09:35 <whack> some boolean metrics are useful
+09:35 <jamesc> whack: Right.  So we add  a metric based on the context to make it into an event.
+09:36 <whack> jbuchbinder: well, I don't think there's a 1:1 relationship with metric and context
+09:36 <whack> yo ucould have a test that emits lots of metrics and only one log.
+09:36 <whack> you'd have N events
+09:36 <jbuchbinder> whack: Agreed.
+09:36 <whack> 1 for each metric/context pair
+09:37 <whack> anyway, I've lost track of where this was going
+09:37 <lusis> trying to define "event"
+09:37 <lusis> if it's even in scope
+09:37 <kallistec> it still feels upside down to me, you have an event like a webservice request, then you have the rate of those events to get your metric, requests per second,
+09:37 <jamesc> So a metric can be either 'something we want to measure' or 'a numerical value which represent a context'
+09:37 <f3ew> jamesc, it's a number
+09:37 <spike> do we feel like we're getting somewhere?
+09:37 <cwebber> kallistec: but that rate is derived from metrics
+09:38 <cwebber> it is rate/sec
+09:38 <kallistec> the rate is the metric, no?
+09:38 <whack> kallistec: in the statsd world, every web request would just say "hits += 1 please!" and statsd would derive rate, etc
+09:38 <rberger> yes, we need to consider "base" metrics and assume we can have all sorts of derived metrics
+09:38 <rberger> whack +1
+09:38 <lusis> requests per second is context
+09:38 <mattray> kallistec: I believe you're conflating "events that are monitored" vs. "things that cause our monitoring system to care"
+09:38 <lusis> it defines the metric in some way I think
+09:39 <rberger> requests per second is derived from the base metric
+09:39 <whack> kallistec: on the other hand, if your web app tracked hits internally, and you polled it every 10 seconds for 'total hits in your life time'
+09:39 <lusis> okay so let's come back to this
+09:39 <kallistec> sure
+09:39 <lusis> in the interest of progress ;)
+09:40 <lusis> so other primitives - the whole host, service, application type stuff
+09:40 <lusis> simply a "resource"?
+09:40 <f3ew> There's a dependency tree of resources
+09:40 <f3ew> Yup
+09:40 <mattray> lusis: I deferred that to the 'model'
+09:40 <spike> I liked to scrap host in favor of node
+09:40 <spike> and then services or apps are resources of a node
+09:41 <mattray> different monitoring tools define the things that are monitored different ways
+09:41 <lusis> spike: I think the thing is that node is even to specific
+09:41 <whack> some of my tests don't have nodes at all
+09:41 <cwebber> spike: +1
+09:41 <kallistec> right, I think of this stuff in terms of what the hell pager duty says when it calls me
+09:41 <whack> like, "How many customers signed up today?" has no node/host
+09:41 <f3ew> spike, it's all a "resource".
+09:41 <lusis> we just need to a word to describe WHAT is being monitored
+09:41 <mattray> whack: agreed
+09:41 <jamesc> whack: +1
+09:41 <lusis> in general
+09:41 <kallistec> aside: host-centric leads to stupid messages
+09:41 <f3ew> A resource may be a container for other resources
+09:41 <whack> the resource "Customer signup count" belongs to the business resource
+09:41 <lusis> kallistec: amen
+09:41 <spike> f3ew: ok, +1 to that
+09:41 <f3ew> lusis I vote for resource
+09:41 <mattray> I like resource too
+09:42 <whack> so resource is just context, is it not?
+09:42 <spike> I'm good with "dependency tree of resources"
+09:42 <zts> +1 for resource
+09:42 <rberger> Lets start with resource
+09:42 <cwebber> +1 for resource
+09:42 <lusis> so a resource is what is either generating a metric or a metric we want to get
+09:42 <mattray> Zenoss has the concept of multiple views into the model, that's kinda useful
+09:42 <f3ew> whack, in the context of an event, yes
+09:42 <JonWood> +1 for resource
+09:42 <mattray> node-based, system-based and tag-based
+09:42 <lusis> rather the source of a metric
+09:42 <jamesc> lusis:  a resource is a grouping of metrics
+09:42 <f3ew> jamesc, the source of a metric
+09:42 <f3ew> It's a better definition
+09:42 <rberger> source of metrics +1
+09:42 <lusis> grouping is higher level
+09:43 <jamesc> f3ew: Ok, as long as it doesn't actually mean that it generated it.
+09:43 <rberger> grouping may end up being views, but lest go with that
+09:43 <mattray> some metrics may belong to multiple resources with that definition
+09:43 <f3ew> jamesc, right
+09:43 <mattray> I'm happy to just use tags for Resources
+09:43 <whack> mattray: I think tags is an implementation
+09:43 <lusis> okay so next
+09:43 <mattray> so metrics may belong to * Resources
+09:43 <f3ew> mattray, or maybe you need an abstract resource entity there
+09:43 <lusis> what do we call "reactions", "triggers"
+09:44 <lusis> or is that in the scope of the component doing "whatever that is"
+09:44 <f3ew> what's a reaction?
+09:44 <lusis> in nagios terms
+09:44 <lusis> an event handler
+09:44 <mattray> that's where I was thinking Events trigger something... so "Reactions" works I guess
+09:44 <lusis> maybe a notification
+09:44 <lusis> maybe a service restart
+09:44 <mattray> and Reactions are consumed by the Alerting engine
+09:44 <lusis> in graphite it's "draw this shit"
+09:44 <jamesc> lusis: notification is one type of reaction
+09:44 <lusis> jamesc: right
+09:44 <jamesc> Another could be 'restart X'
+09:45 <lusis> it's about perspective
+09:45 <lusis> or rather aspect
+09:45 <jamesc> So Reaction is nice as the trigger term
+09:45 <whack> reactions aren't strictly edge triggered things
+09:45 <lusis> so components have reactions to metrics
+09:45 <lusis> ?
+09:45 <lusis> how the react is up to the scope of a given component?
+09:45 <lusis> s/the/they
+09:45 <lusis> graph it, alert, correlate
+09:46 <jamesc> lusis: Right - and it can be across many metrics
+09:46 <f3ew> right
+09:46 <lusis> k
+09:46 <bmorriso> across metrics and/or conditions?
+09:46 <f3ew> bmorriso, maybe
+09:46 <bmorriso> ok
+09:47 <lusis> okay
+09:47 <spike> so we drop "triggers" and just go for reactions?
+09:47 <lusis> doesn't matter to me
+09:47 <f3ew> A reaction is what happens when an event is received by an event processor
+09:47 <cwebber> so a reaction has a defined condition?
+09:47 <whack> reactions certainly sound like additional tests
+09:47 <bmorriso> I think a trigger "triggers" a reaction
+09:47 <f3ew> A reaction is what happens when an event is received by an event processor <=== acceptable?
+09:48 <f3ew> whack, they may be.
+09:48 <lusis> f3ew: as long as event processor is generic enough
+09:48 <jamesc> f3ew: Does it assume something actually happens
+09:48 <rberger> And there may be a chain or parallel reactors
+09:48 <bmorriso> graph it, alert, corrrelate
+09:48 <f3ew> jamesc, a null reaction is still a reaction
+09:48 <jamesc> An event processer gets an event, and it decides there's nothing to do.
+09:48 <jamesc> Ah ok.
+09:48 <jamesc> And is there a term for a positive reaction?  Is that a trigger?
+09:48 <lusis> okay
+09:48 <rberger> There may be an event dispatcher or a pub/sub arraingement
+09:48 <lusis> jamesc: that's my concern
+09:49 <lusis> is that reaction has a negative connotation
+09:49 <whack> lusis: nod
+09:49 >>> f3ew feels a trigger is the activity of the event being processed
+09:49 <lusis> the good/badness of it is irrelevant
+09:49 <mattray> "Action"?
+09:49 <whack> sounds like reaction should be 'event processor' ?
+09:49 <lusis> so maybe trigger is a better word
+09:49 <vvuksan> action
+09:49 <whack> I'm not sure what the goal is
+09:49 <lusis> action?
+09:49 <mattray> Events have Actions?
+09:49 <bmorriso> f3ew: (9:47:45 AM) bmorriso: I think a trigger "triggers" a reaction
+09:49 <whack> all I heard was "reaction" and "trigger" with no use case example or context :(
+09:49 <f3ew> bmorriso, yup
+09:49 <lusis> whack: a generic term for describing what happens with a metric
+09:50 <bmorriso> trigger is the threshold, reaction is the event taken once the threshold is met/exceeded
+09:50 <rberger> I think that a missing piece in current monitoring is not having a generic event gathering / dispersment mechanism
+09:50 <lusis> one system graphs it, another alerts on it, another correlates it with historical
+09:50 <rberger> We should consider a way that arbitrary processes can get selected elements of the event stream
+09:50 <lusis> mind you those could all be one system but that's out of scope
+09:51 <jamesc> reaction perhaps emphasises the 're'
+09:51 <jamesc> so 'action' might be better.
+09:51 <lusis> action then regardless of alignment?
+09:51 <lusis> heh
+09:51 <jamesc> It's not only for things that need alerting, etc...
+09:51 <nuknad> Does this account for Time dependent alerting, like holts-winter
+09:51 <lusis> my chaotic neutral monitoring system
+09:51 <mattray> nuknad: yeah
+09:51 <jamesc> If it's the thing that any generic event processor does upon receiving an event
+09:52 <lusis> jamesc: right
+09:52 <mattray> nuknad: your Event definitions change with HOW
+09:52 <mattray> s/HOW/HW?
+09:52 <lusis> okay I'm going to go with action unless someone slaps me with a fish
+09:52 <rberger> There may be many actions
+09:52 <mattray> rberger: definitely
+09:52 <lusis> right
+09:53 <rberger> This is a point where some kind of fanout is needed
+09:53 <lusis> at this point the exercise is so that we can communicate effectively
+09:53 <rberger> pub / sub or something
+09:53 <lusis> implementation is somewhat out of scope
+09:53 <vvuksan> rberger: that's implementation
+09:53 <mattray> hopefully implementation will become modular and best of breed :)
+09:53 <lusis> so we've defined metric, context, event, resource and action
+09:53 <lusis> thresholds are an implementation detail, yes?
+09:53 <rberger> Its a key architectural thing to remember then
+09:54 <mattray> lusis: do we need to mention thresholds, or did that get consumed into events and context?
+09:54 <jamesc> thresholds are part of an event processor
+09:54 <lusis> mattray: I think it's implementation
+09:54 <mattray> ok
+09:54 <jamesc> Which decides which type of action to take.
+09:54 <spike> implementation +1
+09:54 <lusis> okay
+09:54 <lusis> so now
+09:54 <lusis> components
+09:54 <lusis> this should go pretty fast and then sadly I have to bail
+09:54 <lusis> (but i've got notes!)
+09:55 <lusis> metric collection
+09:55 <bmorriso> components = anything measured/monitored
+09:55 <lusis> bmorriso: actuall we're talking about the peices of the system
+09:55 <lusis> so the graphing component
+09:55 <lusis> or the alerting or correlation component
+09:55 <bmorriso> ah
+09:55 <bmorriso> ok
+09:55 <lusis> I'm happy with another word
+09:55 <lusis> module
+09:55 <lusis> block
+09:55 <lusis> whatever
+09:56 <mattray> components are fine
+09:56 <mattray> what's important are the APIs between them
+09:56 <lusis> right
+09:56 <lusis> so what ARE the components
+09:56 <mattray> and the distinctions of what they do
+09:56 <rberger> If we're talking modules, I'm still promoting a module that routes/dispatches pub/subs the event stream
+09:56 <lusis> with some possible logical groupings
+09:56 <mattray> Collection is first
+09:56 <spike> correlation/processing, graphing, collector, storage, event reactors?
+09:56 <lusis> collection (again regardless of impl)
+09:57 <lusis> push v. pull
+09:57 <lusis> rberger: that's fair
+09:57 <lusis> rberger: if anyone looked at the mongrove stuff
+09:57 <rberger> haven't seen that
+09:57 <spike> the collector can do dispatching tho
+09:57 <lusis> the "bus" was a distinct component
+09:57 <lusis> iirc
+09:57 <spike> it is
+09:57 <mattray> Event Processing is a component. Consumes the output of Collection, applies rules and executes Actions on them.
+09:58 <rberger> +1 Event processing
+09:58 <spike> for example collectd's  can have a filter and send to another collectd
+09:58 <spike> so to me the collector can do routing/dispatching
+09:58 <lusis> graphing
+09:58 <mattray> spike: so that implementation has collapsed collection and event processing
+09:58 <lusis> mattray: which is fine I think
+09:58 <mattray> IMHO, Graphing is part of Presentation
+09:59 <lusis> some components have genetic ties
+09:59 <lusis> heh
+09:59 <rberger> statistical processing
+09:59 <lusis> mattray: yeah I did graphing/presentation
+09:59 <lusis> analytics too broad?
+09:59 <f3ew> analytics is fine
+09:59 <mattray> Analytics or Reporting?
+09:59 <lusis> k
+09:59 <danryan> I would throw management in there as well (either cli or web-based)
+09:59 <rberger> +1 analytics 
+09:59 <f3ew> mattray, reporting and alerting are the results of analytics
+09:59 <lusis> where does "alerting" and "service restart" fit in?
+09:59 <mattray> danryan: Configuration as a component?
+10:00 <rberger> luis: actions
+10:00 <lusis> event processing?
+10:00 <spike> lusis: event actions
+10:00 <jamesc> lusis:  They're an event processor
+10:00 <spike> yeah
+10:00 <spike> +1
+10:00 <lusis> k
+10:00 <f3ew> analyze -> the results of analysis may generate an event which causes alerts
+10:00 <danryan> mattray: indeed
+10:00 <rberger> Is ESPER an event processor?
+10:00 <whack> rberger: that's what the project says
+10:00 <lusis> rberger: it's in the acronym I think
+10:00 <spike> it's an event and metrics processor to me tho
+10:01 <kumarshantanu> ESPER can detect patterns of events and route them to processing routines accordingly
+10:01 <f3ew> Also, events can generate other events?
+10:01 <mattray> f3ew: absolutely
+10:01 <lusis> f3ew: sure but that's implementation
+10:01 <f3ew> Cascading events?
+10:01 <rberger> Its the idea of an event processor block that may then have actions triggered as its ouput
+10:01 <lusis> right?
+10:01 <mattray> and events can depend on correlation. it's up to implementation
+10:01 <f3ew> lusis, I am just wondering if we need a term for it
+10:01 <lusis> I still have "state machine" in my head and notes
+10:01 <lusis> not sure why
+10:02 <lusis> Also actors heh
+10:02 <mattray> lusis: for applying to Resources?
+10:02 <jamesc> Some of things we describe here have several components.
+10:02 <spike> why not "analysis engine", which can either fire event or even just do aggregation for storage
+10:02 <jamesc> Many event processors will be metric collectors to.
+10:02 <spike> so basically "processing"
+10:02 <lusis> storage
+10:02 <lusis> forgot about that
+10:02 --- cwebber__ is now known as cwebber
+10:03 <spike> data comes in and it's either sent out as an event or as something to store and whatnot
+10:03 <lusis> could be distinct but really is specific to a component
+10:03 <spike> or even to be displayed
+10:03 <lusis> here's what I've got now
+10:03 <lusis> Collection (getting the metrics)
+10:03 <lusis> Event Processing (alerting, service restarting, forwarding?)
+10:03 <lusis> Graphing/presentation
+10:03 <lusis> Analytics
+10:03 <lusis> what am I missing?
+10:04 <mattray> Configuration & Storage
+10:04 <jamesc> The model.
+10:04 <rberger> the event stream dispatching block
+10:04 <spike> so, do we have: collection/routing/dispath, processing, storage, event actions, graphing ?
+10:04 <lusis> hahah
+10:04 <lusis> wow
+10:04 <jamesc> mattray: model == configuration
+10:04 <lusis> I'm just goign to paste those lines RIGHT in my notes
+10:04 <Volcane> fwiw, this is one possible composition of unimatrix with its various bits
+10:04 <Volcane> excluding callbacks and a few others http://www.devco.net/images/flow.png
+10:04 <mattray> jamesc: I meant the model that we referred to earlier as Resources
+10:05 <Volcane> the 'portal consumer' is the entry point to all things, and it can be many thigns, queues, topics, fanouts whatever
+10:05 <f3ew> mattray, the collection of resources would be a model, surely?
+10:05 <mattray> yes
+10:05 <Volcane> and its a router, that shunts types of events to other subsystems
+10:05 <jamesc> mattray: RIght, so what I meant by model, is probably configuration
+10:05 <Volcane> like status, correlation, archiving, graphing with whatever tools etc
+10:06 <lusis> okay I'm going to punt and put this up for commenting somewhere
+10:06 <Volcane> all the data creators, push/pull/whatever, all drops things into the portal in whatever way make sense to them
+10:07 <lusis> not that you guys can't keep going on the component part today
+10:07 <mattray> once we've got something up with the new terminology, I'll try to writeup how these apply to Zenoss for reference (and how Zenoss blurs our various components)
+10:07 <mattray> since I'm familiar with that
+10:07 <mattray> not that I'm recommending it
+10:07 <spike> are we good then components wise?
+10:07 <lusis> Volcane: it might be worth taking the unimatrix stuff and highlighting using the terms we came up with
+10:07 <lusis> Volcane: I'll have the notes up soon hopefully
+10:07 <Volcane> nod
+10:07 <lusis> Volcane: I think you missed the first part
+10:07 <lusis> ?
+10:07 <mattray> I think the application of the terms to a real monitoring tool will expose any gaps
+10:07 <rberger> Maybe we can map existing tools into this nomenclature and see what fits and whats missing
+10:07 <lusis> okay so here's an interesting exercise
+10:07 <spike> mattray: +1
+10:08 <lusis> thanks to mattray just now
+10:08 <lusis> we could probably get value from taking existing tools
+10:08 <lusis> and overlaying our new terms?
+10:08 <spike> +1
+10:08 <rberger> luis+1
+10:08 <lusis> where they map cleanly that is
+10:08 <mattray> lusis: I was actually thinking of taking pieces out of existing tools eventually :)
+10:08 <lusis> mattray: heh
+10:09 <lusis> does anyone have any idea the best way to do that?
+10:09 <lusis> something collaborative?
+10:09 <lusis> google docs?
+10:09 <lusis> something that supports pictures!
+10:09 <rberger> Pictures +1
+10:09 <lusis> actually
+10:09 <lusis> github does image diffs now right?
+10:09 <f3ew> What's a collective graphics editing site?
+10:10 <rberger> If we can take your notes and have a base canonical layout to start with
+10:10 <spike> gdocs can draw now iirc
+10:10 <spike> so we could use that
+10:10 <lusis> okay cool. I'll take an initial stab at it
+10:10 <f3ew> Or even a HTML Canvas@ spike
+10:10 <lusis> mattray already said he's doing zenoss
+10:10 <lusis> hehe
+10:10 <cwebber> is there someone with a wiki we could start with?
+10:10 <spike> f3ew: yeah, but then you have the saving/gen images problem part
+10:10 <spike> there are a few mindmap tools out there we could use
+10:10 <rberger> First we should write a collaborative drawing tool :-)
+10:10 <lusis> cwebber: I think the existing github repo is best for now
+10:10 <spike> but sounds more complicated than it's needed
+10:10 <lusis> rberger: BUSINESS MODEL
+10:11 <lusis> win
+10:11 <lusis> okay a few more minor things
+10:11 <lusis> if anyone is interesting
+10:11 <lusis> er interested
+10:11 <lusis> you're all interesting
+10:11 <mattray> I'm interesting/ed
+10:11 <lusis> whack had a cool idea about recording some screencasts
+10:11 <lusis> like "this is how I use nagios. here's where it pisses me off. here's where it's cool"
+10:12 <lusis> feel free to do that ;)
+10:12 <rberger> Yeah, tours of various tools,
+10:12 <rberger> whats good/bad/interesting
+10:12 <bmorriso> http://www.screenr.com/
+10:12 <lusis> we can stick the links in the tools repo
+10:12 <lusis> bmorriso: ahh cool. thanks
+10:12 <bmorriso> I've used it before
+10:13 >>> lusis is woefully behind his screencasting knowledge
+10:13 <bmorriso> I think allows 5 mins for free
+10:13 <whack> gtk-recordmydesktop is pretty awesome on linux
+10:13 <lusis> perfect
+10:13 <lusis> force people to be focused
+10:13 <bmorriso> I just use it for bug reporting like "here, see, it's broke!" :P
+10:13 <lusis> okay so anything else?
+10:14 <lusis> I'll try and get the notes up this afternoon assuming nagios can stop sucking for 10 minutes
+10:14 >>> lusis HAD inbox 0
+10:14 <lusis> also if you guys have your own tools you're working on ( danryan kallistec whoever)
+10:14 <lusis> feel free to do that overlay ;)
+10:15 <lusis> also a "this covers components "foo, bar, baz"
+10:15 <lusis> last call
+10:16 <lusis> anyone else for commit access?
+10:16 <lusis> I take payment in small unmarked bills ;)
+10:16 <cwebber> lusis: cwebberops
+10:16 <lusis> got it
+10:16 <lusis> just got your msg
+10:16 <cwebber> cool
+10:16 <lusis> also spike and zts I got you guys to
+10:16 <lusis> okay. cool
+10:16 <spike> ta
+10:17 <lusis> thanks everyone
